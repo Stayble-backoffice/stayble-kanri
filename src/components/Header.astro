@@ -1,5 +1,7 @@
 ---
 import { navItems } from "../data/site";
+
+const mobileNavItems = [...navItems, { label: "お問い合わせ", href: "/contact/" }];
 ---
 
 <header class="site-header">
@@ -12,5 +14,58 @@ import { navItems } from "../data/site";
       {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
     <a class="btn btn-primary header-cta" href="/contact/">無料相談する</a>
+    <button class="mobile-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="mobile-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
+  <nav class="mobile-drawer" id="mobile-nav" aria-label="スマートフォンメニュー" hidden>
+    <div class="mobile-drawer-grid">
+      {mobileNavItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+    <a class="mobile-drawer-cta" href="/contact/">無料相談する</a>
+  </nav>
 </header>
+
+<script is:inline>
+  (() => {
+    const header = document.querySelector(".site-header");
+    const button = document.querySelector(".mobile-menu-toggle");
+    const drawer = document.getElementById("mobile-nav");
+
+    if (!(button instanceof HTMLButtonElement) || !(drawer instanceof HTMLElement)) {
+      return;
+    }
+
+    const setOpen = (open) => {
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+      drawer.hidden = !open;
+      header?.classList.toggle("is-menu-open", open);
+    };
+
+    button.addEventListener("click", () => {
+      setOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    drawer.addEventListener("click", (event) => {
+      const target = event.target;
+      if (target instanceof Element && target.closest("a")) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    });
+
+    window.matchMedia("(min-width: 1024px)").addEventListener("change", (event) => {
+      if (event.matches) {
+        setOpen(false);
+      }
+    });
+  })();
+</script>
