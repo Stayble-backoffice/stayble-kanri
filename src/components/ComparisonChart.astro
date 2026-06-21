@@ -46,44 +46,88 @@ const assumptions = [
 ---
 
 <div class:list={["comparison-wrap", compact && "comparison-compact"]}>
-  <div class="comparison-summary">
-    <p class="section-label">SIMULATION</p>
-    <h3>月間売上300,000円・規模Bの場合</h3>
-    <p>
-      規模B相当の物件で、管理費と清掃費を控除した後に残る金額を比較します。オーナー側の借上賃料、消耗品費、税金、ローン等は含めていません。
-    </p>
-    <div class="comparison-highlight">
-      <span>この条件例の差額</span>
-      <strong>月47,000円</strong>
+  <div class="desktop-comparison-content">
+    <div class="comparison-summary">
+      <p class="section-label">SIMULATION</p>
+      <h3>月間売上300,000円・規模Bの場合</h3>
+      <p>
+        規模B相当の物件で、管理費と清掃費を控除した後に残る金額を比較します。オーナー側の借上賃料、消耗品費、税金、ローン等は含めていません。
+      </p>
+      <div class="comparison-highlight">
+        <span>この条件例の差額</span>
+        <strong>月47,000円</strong>
+      </div>
     </div>
-  </div>
-  <div class="assumption-strip" aria-label="シミュレーション前提">
-    {assumptions.map((item) => <span>{item}</span>)}
-  </div>
-  <div class="comparison-bars" aria-label="管理控除後シミュレーションの積み上げ比較">
-    {comparisonItems.map((item) => (
-      <article class:list={["comparison-card", item.modifier]}>
-        <h4>{item.label}</h4>
-        <div class="stack-bar">
-          <div class="bar-segment owner" style={`height: ${item.ownerHeight}`}>
-            <span><em>管理控除後の手残り</em><strong>{item.owner}</strong></span>
+    <div class="assumption-strip" aria-label="シミュレーション前提">
+      {assumptions.map((item) => <span>{item}</span>)}
+    </div>
+    <div class="comparison-bars" aria-label="管理控除後シミュレーションの積み上げ比較">
+      {comparisonItems.map((item) => (
+        <article class:list={["comparison-card", item.modifier]}>
+          <h4>{item.label}</h4>
+          <div class="stack-bar">
+            <div class="bar-segment owner" style={`height: ${item.ownerHeight}`}>
+              <span><em>管理控除後の手残り</em><strong>{item.owner}</strong></span>
+            </div>
+            <div class="bar-segment cleaning" style={`height: ${item.cleaningHeight}`}>
+              <span><em>{item.cleaningLabel}</em><strong>{item.cleaning}</strong></span>
+            </div>
+            <div class="bar-segment management" style={`height: ${item.managementHeight}`}>
+              <span><em>{item.managementLabel}</em><strong>{item.management}</strong></span>
+            </div>
           </div>
-          <div class="bar-segment cleaning" style={`height: ${item.cleaningHeight}`}>
-            <span><em>{item.cleaningLabel}</em><strong>{item.cleaning}</strong></span>
-          </div>
-          <div class="bar-segment management" style={`height: ${item.managementHeight}`}>
-            <span><em>{item.managementLabel}</em><strong>{item.management}</strong></span>
-          </div>
-        </div>
-        <p class="bar-note">{item.note}</p>
-      </article>
-    ))}
+          <p class="bar-note">{item.note}</p>
+        </article>
+      ))}
+    </div>
+    <div class="comparison-callouts">
+      <p><strong>清掃費マージンの見え方</strong> 管理会社が清掃を外注する構造では、清掃会社の原価に管理会社側の調整コストが乗る場合があります。</p>
+      <p><strong>Staybleの見え方</strong> 清掃会社が管理を請け負うため、清掃・リネンサプライ・報告導線を一体で設計できます。</p>
+    </div>
+    <ul class="notes">
+      {simulationNotes.map((note) => <li>{note}</li>)}
+    </ul>
   </div>
-  <div class="comparison-callouts">
-    <p><strong>清掃費マージンの見え方</strong> 管理会社が清掃を外注する構造では、清掃会社の原価に管理会社側の調整コストが乗る場合があります。</p>
-    <p><strong>Staybleの見え方</strong> 清掃会社が管理を請け負うため、清掃・リネンサプライ・報告導線を一体で設計できます。</p>
+
+  <div class="mobile-comparison-content mobile-only" aria-label="スマートフォン向け管理控除後シミュレーション">
+    <div class="mobile-comparison-head">
+      <p class="section-label">SIMULATION</p>
+      <h3>同じ売上でも、残る金額は変わります。</h3>
+      <p>月間売上300,000円、清掃5回の条件例。管理費と清掃費を控除した後の比較です。</p>
+      <strong>差額 月47,000円</strong>
+    </div>
+    <div class="mobile-comparison-cards">
+      {comparisonItems.map((item) => (
+        <article class:list={["mobile-comparison-card", item.modifier === "stayble-card" && "is-stayble"]}>
+          <span>{item.label}</span>
+          <div class="mobile-owner-amount">
+            <small>管理控除後の手残り</small>
+            <strong>{item.owner}</strong>
+          </div>
+          <dl>
+            <div>
+              <dt>{item.managementLabel}</dt>
+              <dd>{item.management}</dd>
+            </div>
+            <div>
+              <dt>{item.cleaningLabel}</dt>
+              <dd>{item.cleaning}</dd>
+            </div>
+          </dl>
+          <p>{item.note}</p>
+        </article>
+      ))}
+    </div>
+    <div class="mobile-margin-note">
+      <strong>清掃会社が運営するため、清掃費の上乗せ構造を抑えやすい比較です。</strong>
+      <span>一般管理会社は12,000円/回、Staybleは10,000円/回の条件例で計算しています。</span>
+    </div>
+    <details class="mobile-note-box">
+      <summary>前提と注釈を見る</summary>
+      <ul>
+        {assumptions.map((item) => <li>{item}</li>)}
+        {simulationNotes.map((note) => <li>{note}</li>)}
+      </ul>
+    </details>
   </div>
-  <ul class="notes">
-    {simulationNotes.map((note) => <li>{note}</li>)}
-  </ul>
 </div>

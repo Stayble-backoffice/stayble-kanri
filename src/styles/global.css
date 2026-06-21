@@ -2019,23 +2019,6 @@ h3 {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0));
   }
 
-  .hero-visual::after {
-    content: "民泊清掃管理 約240室";
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    z-index: 3;
-    border: 1px solid rgba(15, 143, 168, 0.2);
-    border-radius: 999px;
-    padding: 7px 10px;
-    color: var(--navy-800);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 10px 22px rgba(7, 26, 51, 0.12);
-    font-family: var(--font-sans);
-    font-size: 0.74rem;
-    font-weight: 900;
-  }
-
   .comparison-wrap {
     margin-right: -4px;
     margin-left: -4px;
@@ -2276,5 +2259,542 @@ h3 {
 
   .form-panel {
     padding: 18px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-price-plans,
+  .desktop-cost-table,
+  .desktop-linen-table,
+  .desktop-comparison-content,
+  .desktop-card-grid,
+  .desktop-flow-list,
+  .desktop-service-split,
+  .desktop-cleaning-split,
+  .area-map,
+  .area-card-grid,
+  .area-wide-link {
+    display: none !important;
+  }
+
+  .mobile-price-plans,
+  .mobile-cleaning-costs,
+  .mobile-linen-units,
+  .mobile-comparison-content,
+  .mobile-insight-list,
+  .mobile-flow-list,
+  .mobile-service-summary,
+  .mobile-scope-list,
+  .mobile-operation-block,
+  .mobile-area-summary,
+  .mobile-emergency-scope {
+    display: grid;
+  }
+
+  .mobile-price-plans {
+    gap: 18px;
+  }
+
+  .mobile-fee-key {
+    display: grid;
+    gap: 8px;
+    border: 1px solid rgba(184, 147, 66, 0.32);
+    border-radius: 12px;
+    padding: 18px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(235, 248, 251, 0.9)),
+      radial-gradient(circle at 0% 0%, rgba(184, 147, 66, 0.16), transparent 42%);
+    box-shadow: 0 16px 34px rgba(7, 26, 51, 0.08);
+  }
+
+  .mobile-fee-key span,
+  .mobile-comparison-head span,
+  .mobile-plan-card span,
+  .mobile-cost-card-head span,
+  .mobile-linen-card span,
+  .mobile-comparison-card > span,
+  .mobile-area-head strong {
+    color: var(--teal-600);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .mobile-fee-key strong {
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-size: clamp(1.28rem, 5vw, 1.72rem);
+    line-height: 1.35;
+  }
+
+  .mobile-fee-key small {
+    color: var(--gray-700);
+    font-size: 0.82rem;
+  }
+
+  .mobile-plan-stack,
+  .mobile-cost-stack,
+  .mobile-linen-grid,
+  .mobile-comparison-cards,
+  .mobile-insight-list,
+  .mobile-flow-list,
+  .mobile-service-summary,
+  .mobile-scope-list,
+  .mobile-operation-block,
+  .mobile-emergency-scope {
+    gap: 12px;
+  }
+
+  .mobile-plan-card,
+  .mobile-cost-card,
+  .mobile-linen-card,
+  .mobile-comparison-card,
+  .mobile-insight-list article,
+  .mobile-flow-list article,
+  .mobile-operation-block article,
+  .mobile-area-summary,
+  .mobile-emergency-scope article {
+    border: 1px solid rgba(15, 143, 168, 0.16);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 26px rgba(7, 26, 51, 0.07);
+  }
+
+  .mobile-plan-card {
+    display: grid;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .mobile-plan-card h3 {
+    margin: 3px 0 0;
+    font-size: 1.1rem;
+  }
+
+  .mobile-plan-card dl,
+  .mobile-cost-card dl,
+  .mobile-comparison-card dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+  }
+
+  .mobile-plan-card dl div,
+  .mobile-cost-card dl div,
+  .mobile-comparison-card dl div {
+    border: 1px solid rgba(15, 143, 168, 0.12);
+    border-radius: 8px;
+    padding: 10px;
+    background: rgba(243, 250, 253, 0.72);
+  }
+
+  .mobile-plan-card dt,
+  .mobile-cost-card dt,
+  .mobile-comparison-card dt {
+    color: var(--gray-500);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .mobile-plan-card dd,
+  .mobile-cost-card dd,
+  .mobile-comparison-card dd {
+    margin: 3px 0 0;
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-plan-card p,
+  .mobile-cost-lead p,
+  .mobile-linen-head p,
+  .mobile-comparison-head p,
+  .mobile-comparison-card p,
+  .mobile-margin-note span,
+  .mobile-area-head span,
+  .mobile-scope-list p,
+  .mobile-operation-block span,
+  .mobile-service-summary p {
+    margin: 0;
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .mobile-note-box {
+    border: 1px solid rgba(15, 143, 168, 0.14);
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: rgba(243, 250, 253, 0.9);
+    color: var(--gray-700);
+    font-size: 0.82rem;
+  }
+
+  .mobile-note-box summary {
+    cursor: pointer;
+    color: var(--navy-800);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-note-box ul {
+    padding-left: 18px;
+    margin: 10px 0 0;
+  }
+
+  .mobile-cleaning-costs,
+  .mobile-linen-units {
+    gap: 16px;
+  }
+
+  .mobile-cost-lead,
+  .mobile-linen-head {
+    display: grid;
+    gap: 6px;
+  }
+
+  .mobile-cost-lead h3,
+  .mobile-linen-head h3,
+  .mobile-comparison-head h3 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+
+  .mobile-cost-card {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .mobile-cost-card-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .mobile-cost-card-head strong {
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-size: 1.28rem;
+    line-height: 1;
+  }
+
+  .mobile-cost-card dl {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-cost-card dl div,
+  .mobile-comparison-card dl div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .mobile-linen-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-linen-card {
+    display: grid;
+    min-height: 118px;
+    gap: 8px;
+    padding: 14px;
+    align-content: space-between;
+  }
+
+  .mobile-linen-card strong {
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-size: 1.12rem;
+  }
+
+  .mobile-linen-card small {
+    color: var(--gray-700);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .comparison-wrap {
+    padding: 18px;
+  }
+
+  .mobile-comparison-content {
+    gap: 16px;
+  }
+
+  .mobile-comparison-head {
+    display: grid;
+    gap: 8px;
+    border: 1px solid rgba(184, 147, 66, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 252, 254, 0.95)),
+      radial-gradient(circle at 100% 0%, rgba(184, 147, 66, 0.16), transparent 34%);
+  }
+
+  .mobile-comparison-head strong {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 8px 12px;
+    color: var(--white);
+    background: var(--navy-800);
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+  }
+
+  .mobile-comparison-card {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .mobile-comparison-card.is-stayble {
+    border-color: rgba(15, 143, 168, 0.34);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(231, 248, 252, 0.9)),
+      radial-gradient(circle at 100% 0%, rgba(25, 169, 200, 0.13), transparent 38%);
+  }
+
+  .mobile-owner-amount {
+    display: grid;
+    border: 1px dashed rgba(15, 143, 168, 0.42);
+    border-radius: 8px;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.92);
+    background-image: radial-gradient(rgba(15, 143, 168, 0.3) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+
+  .mobile-owner-amount small {
+    color: var(--navy-800);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-owner-amount strong {
+    color: var(--navy-900);
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    line-height: 1.15;
+  }
+
+  .mobile-margin-note {
+    display: grid;
+    gap: 6px;
+    border-left: 4px solid var(--teal-600);
+    border-radius: 8px;
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.86);
+  }
+
+  .mobile-margin-note strong {
+    color: var(--navy-800);
+    line-height: 1.6;
+  }
+
+  .mobile-insight-list article,
+  .mobile-flow-list article {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .mobile-insight-list article > span,
+  .mobile-flow-list article > span {
+    display: inline-grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--teal-600), var(--teal-500));
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .mobile-insight-list h3,
+  .mobile-flow-list h3 {
+    margin-bottom: 4px;
+    font-size: 1.08rem;
+  }
+
+  .mobile-insight-list p,
+  .mobile-flow-list p {
+    margin: 0;
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .mobile-service-summary,
+  .mobile-scope-list,
+  .mobile-operation-block {
+    gap: 14px;
+  }
+
+  .mobile-service-summary h2,
+  .mobile-scope-list h2,
+  .mobile-operation-block h2 {
+    margin: 0;
+    font-size: 1.48rem;
+  }
+
+  .mobile-service-summary ul,
+  .mobile-scope-list ul {
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .mobile-service-summary li,
+  .mobile-scope-list li {
+    border: 1px solid rgba(15, 143, 168, 0.14);
+    border-radius: 9px;
+    padding: 11px 13px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--navy-800);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  .mobile-operation-block > div {
+    display: grid;
+    gap: 10px;
+  }
+
+  .mobile-operation-block article {
+    display: grid;
+    gap: 5px;
+    padding: 14px;
+  }
+
+  .mobile-operation-block strong {
+    color: var(--navy-800);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-area-summary {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .mobile-area-head {
+    display: grid;
+    gap: 5px;
+  }
+
+  .mobile-area-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mobile-area-chips span,
+  .mobile-emergency-scope span {
+    display: inline-flex;
+    border: 1px solid rgba(15, 143, 168, 0.18);
+    border-radius: 999px;
+    padding: 7px 11px;
+    color: var(--navy-800);
+    background: rgba(243, 250, 253, 0.92);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
+
+  .mobile-area-summary a {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: var(--white);
+    background: var(--navy-800);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-emergency-scope article {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .mobile-emergency-scope strong {
+    color: var(--navy-800);
+    font-family: var(--font-sans);
+    font-weight: 900;
+  }
+
+  .mobile-emergency-scope div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-grid {
+    gap: 0;
+  }
+
+  .hero-visual {
+    display: none !important;
+  }
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    gap: 8px;
+    padding-bottom: 0;
+  }
+
+  .hero-badges li {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .hero-badges li:first-child,
+  .hero-badges li:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .hero-badges li:nth-child(n + 6) {
+    display: none;
+  }
+
+  .mobile-linen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-plan-card dl,
+  .mobile-comparison-card dl {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-owner-amount strong {
+    font-size: 1.62rem;
+  }
+
+  .mobile-service-summary .btn {
+    width: 100%;
   }
 }

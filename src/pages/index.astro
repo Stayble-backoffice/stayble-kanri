@@ -91,12 +91,23 @@ const services = [
         title="その管理費、本当に必要ですか？"
         lead="民泊運営に必要なのは、見栄えのいい管理会社ではなく、清掃・リネンサプライ・現地対応がきちんと回ること。それなのに、毎月の管理費だけが重くなっていませんか？"
       />
-      <div class="grid-4">
+      <div class="grid-4 desktop-card-grid">
         {problems.map((item, index) => (
           <article class="card">
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mobile-insight-list mobile-only">
+        {problems.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -135,7 +146,7 @@ const services = [
         title="なぜ清掃会社が管理を請け負えるのか。"
         lead="民泊運営でレビューを左右するのは、清掃・リネンサプライ・備品・現地対応です。Staybleはそこをすでに持っているから、管理会社としても余計な中間コストを抑えられます。"
       />
-      <div class="grid-4">
+      <div class="grid-4 desktop-card-grid">
         {reasons.map((item, index) => (
           <article class="card">
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
@@ -144,11 +155,22 @@ const services = [
           </article>
         ))}
       </div>
+      <div class="mobile-insight-list mobile-only">
+        {reasons.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section feature-band">
-    <div class="container split">
+    <div class="container split desktop-service-split">
       <div>
         <p class="section-label">SERVICE</p>
         <h2>清掃・リネンサプライ・OTA運用・現地対応まで、開業済み物件の運用に必要な範囲をまとめます。</h2>
@@ -167,10 +189,18 @@ const services = [
         ))}
       </div>
     </div>
+    <div class="container mobile-service-summary mobile-only">
+      <p class="section-label">SERVICE</p>
+      <h2>運用中物件に必要な業務だけを、現場基盤でまとめます。</h2>
+      <ul>
+        {services.slice(0, 5).map((item) => <li>{item}</li>)}
+      </ul>
+      <a class="btn btn-secondary" href="/services/">サービス内容を見る</a>
+    </div>
   </section>
 
   <section class="section">
-    <div class="container split">
+    <div class="container split desktop-cleaning-split">
       <div>
         <p class="section-label">CLEANING & LINEN SUPPLY</p>
         <h2>清掃品質まで責任を持つため、清掃・リネンサプライはStaybleセット契約です。</h2>
@@ -189,6 +219,17 @@ const services = [
         </ul>
       </div>
     </div>
+    <div class="container mobile-service-summary mobile-only">
+      <p class="section-label">CLEANING & LINEN SUPPLY</p>
+      <h2>清掃・リネンサプライはStaybleセット契約です。</h2>
+      <ul>
+        <li>民泊清掃管理 約240室</li>
+        <li>年間清掃 約15,000件</li>
+        <li>定型写真報告と品質チェック</li>
+        <li>物件特性に応じたリネンサプライ方式</li>
+      </ul>
+      <a class="btn btn-secondary" href="/cleaning-linen/">清掃・リネンサプライを見る</a>
+    </div>
   </section>
 
   <section class="section section-muted" id="area">
@@ -200,12 +241,23 @@ const services = [
   <section class="section">
     <div class="container">
       <SectionHeading label="FLOW" title="乗り換えの流れ" lead="無料相談から運用開始まで、現在の管理会社・OTA・清掃状況を確認しながら進めます。" />
-      <div class="flow-list">
+      <div class="flow-list desktop-flow-list">
         {switchingFlow.map((step, index) => (
           <article class="card flow-card">
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mobile-flow-list mobile-only">
+        {switchingFlow.map((step, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
           </article>
         ))}
       </div>

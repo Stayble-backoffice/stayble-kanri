@@ -38,7 +38,7 @@ const strengths = [
   </section>
 
   <section class="section">
-    <div class="container split">
+    <div class="container split desktop-service-split">
       <div>
         <p class="section-label">WHY SET</p>
         <h2>既存清掃会社の継続はできません。</h2>
@@ -56,6 +56,16 @@ const strengths = [
         </ul>
       </div>
     </div>
+    <div class="container mobile-service-summary mobile-only">
+      <p class="section-label">WHY SET</p>
+      <h2>清掃品質まで責任を持つため、セット契約にします。</h2>
+      <ul>
+        <li>清掃・リネンサプライ・写真報告を同じ導線で管理</li>
+        <li>民泊清掃管理 約240室</li>
+        <li>年間清掃 約15,000件</li>
+        <li>約50名の清掃員ネットワーク</li>
+      </ul>
+    </div>
   </section>
 
   <section class="section section-muted">
@@ -65,12 +75,23 @@ const strengths = [
         title="品質を属人的にしないための運用"
         lead="清掃品質は、現場に入る人・報告の粒度・チェックの頻度で変わります。Staybleは個人単位で品質を追跡します。"
       />
-      <div class="grid-4">
+      <div class="grid-4 desktop-card-grid">
         {strengths.map((item, index) => (
           <article class="card">
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mobile-insight-list mobile-only">
+        {strengths.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -89,7 +110,7 @@ const strengths = [
   </section>
 
   <section class="section">
-    <div class="container split">
+    <div class="container split desktop-service-split">
       <div>
         <p class="section-label">LINEN SUPPLY</p>
         <h2>リネンサプライは標準対応。物件ごとに方式を選びます。</h2>
@@ -108,10 +129,24 @@ const strengths = [
         </article>
       </div>
     </div>
+    <div class="container mobile-operation-block mobile-only">
+      <p class="section-label">LINEN SUPPLY</p>
+      <h2>リネンサプライ方式は物件ごとに選びます。</h2>
+      <div>
+        <article>
+          <strong>都度集配型</strong>
+          <span>保管スペースが限られる物件向け。必要分だけ動かします。</span>
+        </article>
+        <article>
+          <strong>ストック型</strong>
+          <span>物件内に一定量を保管し、清掃回数が多い物件で補充しやすくします。</span>
+        </article>
+      </div>
+    </div>
   </section>
 
   <section class="section feature-band">
-    <div class="container split">
+    <div class="container split desktop-service-split">
       <div>
         <p class="section-label">SUPPLIES</p>
         <h2>消耗品管理は任意オプションです。</h2>
@@ -121,6 +156,11 @@ const strengths = [
           利用する場合は、対象ラインナップ内で在庫管理・補充まで対応します。利用しない場合でも、清掃時に気づいた在庫状況を報告します。
         </p>
       </div>
+    </div>
+    <div class="container mobile-scope-list mobile-only">
+      <p class="section-label">SUPPLIES</p>
+      <h2>消耗品管理は任意です。</h2>
+      <p>利用する場合は在庫管理・補充まで対応し、利用しない場合でも清掃時に気づいた在庫状況を報告します。</p>
     </div>
   </section>
 

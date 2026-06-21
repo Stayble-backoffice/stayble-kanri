@@ -34,7 +34,7 @@ const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗
   </section>
 
   <section class="section section-muted">
-    <div class="container split">
+    <div class="container split desktop-service-split">
       <div>
         <p class="section-label">COST STRUCTURE</p>
         <h2>管理費以外に発生する費用</h2>
@@ -47,6 +47,14 @@ const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗
           {costItems.map((item) => <li>{item}</li>)}
         </ul>
       </div>
+    </div>
+    <div class="container mobile-scope-list mobile-only">
+      <p class="section-label">COST STRUCTURE</p>
+      <h2>管理費とは別に発生する費用</h2>
+      <p>物件条件や運用内容により変動するため、見積もり時に分けて確認します。</p>
+      <ul>
+        {costItems.map((item) => <li>{item}</li>)}
+      </ul>
     </div>
   </section>
 
