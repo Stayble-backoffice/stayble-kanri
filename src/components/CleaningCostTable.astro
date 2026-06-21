@@ -8,7 +8,7 @@ interface Props {
 const { showLinenUnits = false } = Astro.props;
 ---
 
-<div class="cost-table-wrap">
+<div class="cost-table-wrap desktop-cost-table">
   <div class="table-card cost-table-card">
     <table>
       <thead>
@@ -42,8 +42,52 @@ const { showLinenUnits = false } = Astro.props;
   </ul>
 </div>
 
+<div class="mobile-cleaning-costs mobile-only" aria-label="スマートフォン向け清掃リネンサプライ料金">
+  <div class="mobile-cost-lead">
+    <p class="section-label">CLEANING COST</p>
+    <h3>1回あたりの費用を分けて確認</h3>
+    <p>清掃費・リネンサプライ費・消耗品・ゴミ処理関連費を、物件規模ごとに分けて表示します。</p>
+  </div>
+  <div class="mobile-cost-stack">
+    {cleaningCostRows.map((item) => (
+      <article class="mobile-cost-card">
+        <div class="mobile-cost-card-head">
+          <span>{item.layout}</span>
+          <strong>{item.total}</strong>
+        </div>
+        <dl>
+          <div>
+            <dt>清掃費</dt>
+            <dd>{item.cleaning}</dd>
+          </div>
+          <div>
+            <dt>リネンサプライ費</dt>
+            <dd>{item.linen}</dd>
+          </div>
+          <div>
+            <dt>消耗品</dt>
+            <dd>{item.supplies}</dd>
+          </div>
+          <div>
+            <dt>ゴミ処理関連</dt>
+            <dd>{item.waste}</dd>
+          </div>
+        </dl>
+      </article>
+    ))}
+  </div>
+  <details class="mobile-note-box">
+    <summary>料金の注釈を見る</summary>
+    <ul>
+      <li>清掃費は参考料金です。正式な金額は物件確認後に個別見積もりとなります。</li>
+      <li>都度集配型は「単価 × 最大必要枚数 + 集配手数料 ¥550〜」、ストック型は「単価 × 発注枚数 + 集配手数料 ¥2,200 / 月」で計算します。</li>
+      <li>管理費とは別に発生します。</li>
+    </ul>
+  </details>
+</div>
+
 {showLinenUnits && (
-  <div class="linen-unit-panel">
+  <div class="linen-unit-panel desktop-linen-table">
     <div>
       <p class="section-label">LINEN SUPPLY PRICE</p>
       <h3>リネンサプライ単価の確認項目</h3>
@@ -70,6 +114,25 @@ const { showLinenUnits = false } = Astro.props;
           ))}
         </tbody>
       </table>
+    </div>
+  </div>
+)}
+
+{showLinenUnits && (
+  <div class="mobile-linen-units mobile-only" aria-label="スマートフォン向けリネンサプライ単価">
+    <div class="mobile-linen-head">
+      <p class="section-label">LINEN SUPPLY PRICE</p>
+      <h3>リネンサプライ単価</h3>
+      <p>サイズと単価を、スマホでは1品目ずつ確認できる形にしています。</p>
+    </div>
+    <div class="mobile-linen-grid">
+      {linenUnitRows.map((item) => (
+        <article class="mobile-linen-card">
+          <span>{item.item}</span>
+          <strong>{item.price}</strong>
+          <small>{item.size === "-" ? "共通" : item.size}</small>
+        </article>
+      ))}
     </div>
   </div>
 )}
