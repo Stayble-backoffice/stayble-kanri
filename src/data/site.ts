@@ -5,9 +5,9 @@ export const siteMeta = {
   company: "株式会社Stayble",
   service: "乗り換え民泊管理",
   description:
-    "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・現地対応まで、清掃会社のStaybleがまとめて支えます。",
+    "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・Airbnb運用代行・現地対応まで、清掃会社のStaybleがまとめて支えます。",
   ogImage: `${SITE_URL}ogp.png`,
-  ogImageAlt: "今の管理会社、高すぎませんか？清掃会社が管理を請け負う時代へ。乗り換え民泊管理｜Stayble"
+  ogImageAlt: "今の管理会社、高すぎませんか？清掃会社が管理を請け負う時代へ。Stayble 乗り換え民泊管理"
 };
 
 export const navItems = [
@@ -24,7 +24,7 @@ export const pageMeta = {
     path: "/",
     title: "札幌の民泊管理会社乗り換え｜管理費が高いなら Stayble",
     description:
-      "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・現地対応まで、清掃会社のStaybleがまとめて支えます。小樽・千歳・恵庭・北広島・江別も対応。"
+      "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・Airbnb運用代行・現地対応まで、清掃会社のStaybleがまとめて支えます。小樽・千歳・恵庭・北広島・江別も対応。"
   },
   pricing: {
     path: "/pricing/",
@@ -40,9 +40,9 @@ export const pageMeta = {
   },
   services: {
     path: "/services/",
-    title: "札幌の住宅宿泊管理サービス｜清掃・OTA・現地対応 Stayble",
+    title: "札幌の住宅宿泊管理・Airbnb運用代行｜清掃・現地対応 Stayble",
     description:
-      "Staybleの乗り換え民泊管理は、清掃・リネンサプライ・OTA運用・宿泊者名簿・現地対応・定期報告まで、開業済み民泊の運用に必要な業務を支援します。札幌市中心の運用中物件に特化しています。"
+      "Staybleの乗り換え民泊管理は、清掃・リネンサプライ・OTA運用・Airbnb運用代行・宿泊者名簿・現地対応・定期報告まで、開業済み民泊の運用に必要な業務を支援します。札幌市中心の運用中物件に特化しています。"
   },
   cleaning: {
     path: "/cleaning-linen/",
@@ -67,6 +67,12 @@ export const pageMeta = {
     title: "お問い合わせ｜札幌の乗り換え民泊管理 Stayble",
     description:
       "札幌市中心の開業済み民泊向けに、乗り換え民泊管理の相談を受け付けています。物件所在地、売上平均、清掃・リネンサプライ・現地対応の課題が分かる範囲でご相談ください。"
+  },
+  company: {
+    path: "/company/",
+    title: "会社情報｜株式会社Stayble",
+    description:
+      "株式会社Staybleの会社情報。札幌市を中心に、民泊清掃業、住宅宿泊管理業、民泊清掃業務用ソフトウェア提供、Airbnb運用代行を含む民泊運用支援を行います。"
   }
 };
 

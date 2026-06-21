@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.company;
+
+const companyRows = [
+  { label: "会社名", value: "株式会社Stayble" },
+  { label: "本社所在地", value: "北海道札幌市中央区南五条西15丁目2-3" },
+  { label: "設立", value: "2025年4月11日" },
+  { label: "役員", value: "代表取締役　風林　匠真" },
+  { label: "従業員数", value: "約50名（業務委託契約含む）" },
+  { label: "法人番号", value: "4300-01-094167" },
+  {
+    label: "住宅宿泊管理業者登録番号",
+    value: "2026年7月：申請中／登録番号発行待ち",
+    note: "住宅宿泊管理業者登録番号は、登録完了後に掲載します。登録完了までは、住宅宿泊管理に関する事前相談として契約前までのステップで承ります。"
+  },
+  { label: "営業エリア", value: "札幌市、小樽市、千歳市、北広島市、恵庭市、江別市" },
+  { label: "事業目的", value: "民泊清掃業、住宅宿泊管理業、民泊清掃業務用ソフトウェア提供" }
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="会社情報">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">COMPANY</p>
+      <h1>会社情報</h1>
+      <p>
+        株式会社Staybleは、札幌市を中心に民泊清掃業、住宅宿泊管理業、民泊清掃業務用ソフトウェア提供を行う会社です。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">PROFILE</p>
+        <h2>清掃現場から、民泊運用を組み直す会社です。</h2>
+        <p>
+          Staybleは、開業済み民泊オーナー向けに、清掃・リネンサプライ・OTA運用・Airbnb運用代行・現地対応を一体で設計します。管理費だけでなく、清掃品質と現地導線まで含めて見直せる乗り換え先を目指しています。
+        </p>
+      </div>
+      <div class="card">
+        <h3>主な対応領域</h3>
+        <ul class="check-list">
+          <li>民泊清掃業</li>
+          <li>住宅宿泊管理業</li>
+          <li>民泊清掃業務用ソフトウェア提供</li>
+          <li>Airbnb運用代行を含むOTA運用支援</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="company-info-card">
+        <p class="section-label">INFORMATION</p>
+        <h2>会社概要</h2>
+        <dl class="company-info-list">
+          {companyRows.map((row) => (
+            <div>
+              <dt>{row.label}</dt>
+              <dd>
+                <span>{row.value}</span>
+                {row.note && <small>{row.note}</small>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <CTA title="乗り換え管理について相談する" text="現在の管理費、清掃品質、Airbnb運用代行を含むOTA運用、現地対応の課題を分かる範囲でご相談ください。" />
+</BaseLayout>

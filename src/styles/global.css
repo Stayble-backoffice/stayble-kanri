@@ -1417,6 +1417,52 @@ h3 {
   text-align: center;
 }
 
+.company-info-card {
+  border: var(--border);
+  border-radius: 12px;
+  padding: 34px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 252, 254, 0.96)),
+    radial-gradient(circle at 100% 0%, rgba(25, 169, 200, 0.12), transparent 36%);
+  box-shadow: var(--shadow);
+}
+
+.company-info-list {
+  display: grid;
+  margin: 24px 0 0;
+}
+
+.company-info-list div {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 22px;
+  border-top: 1px solid rgba(15, 143, 168, 0.14);
+  padding: 18px 0;
+}
+
+.company-info-list div:last-child {
+  border-bottom: 1px solid rgba(15, 143, 168, 0.14);
+}
+
+.company-info-list dt {
+  color: var(--navy-800);
+  font-family: var(--font-sans);
+  font-weight: 900;
+}
+
+.company-info-list dd {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  color: var(--gray-900);
+}
+
+.company-info-list small {
+  color: var(--gray-700);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
 .site-footer {
   padding: 64px 0 0;
   color: rgba(255, 255, 255, 0.78);
@@ -2124,6 +2170,16 @@ h3 {
 
   .contact-note br {
     display: none;
+  }
+
+  .company-info-card {
+    padding: 22px;
+  }
+
+  .company-info-list div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 16px 0;
   }
 }
 
