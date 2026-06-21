@@ -1,0 +1,42 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import FAQList from "../../components/FAQList.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { faqs, pageMeta } from "../../data/site";
+
+const meta = pageMeta.faq;
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="よくある質問" schema={faqSchema}>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">FAQ</p>
+      <h1>乗り換え民泊管理のよくある質問</h1>
+      <p>
+        料金、清掃・リネンサプライ、OTA立ち上げ、駆け付け対応、宿泊者名簿、対応エリアなど、開業済み民泊オーナー向けに整理しています。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading label="QUESTIONS" title="契約前に確認されやすいこと" />
+      <FAQList />
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

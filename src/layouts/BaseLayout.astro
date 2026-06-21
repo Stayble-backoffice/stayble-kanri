@@ -1,0 +1,105 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_URL, areas, siteMeta } from "../data/site";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  pageName?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const { title, description, path, pageName, schema } = Astro.props;
+const canonical = new URL(path, SITE_URL).toString();
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "株式会社Stayble",
+    url: SITE_URL,
+    sameAs: ["https://www.ww-sapporo-minpaku.com", "https://www.stayble.jp"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "株式会社Stayble",
+    url: SITE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "札幌市中央区",
+      streetAddress: "南5条西15丁目2-3-503",
+      addressCountry: "JP"
+    },
+    areaServed: areas
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "乗り換え民泊管理",
+    url: SITE_URL,
+    provider: {
+      "@type": "Organization",
+      name: "株式会社Stayble"
+    },
+    areaServed: areas,
+    serviceType: "住宅宿泊管理、民泊管理、民泊清掃管理、OTA運用支援"
+  },
+  ...(path === "/"
+    ? []
+    : [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "トップ",
+              item: SITE_URL
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: pageName ?? title,
+              item: canonical
+            }
+          ]
+        }
+      ]),
+  ...(Array.isArray(schema) ? schema : schema ? [schema] : [])
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/fabicon.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={siteMeta.ogImage} />
+    <meta property="og:site_name" content={siteMeta.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={siteMeta.ogImage} />
+    {schemas.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

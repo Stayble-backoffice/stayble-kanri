@@ -1,0 +1,74 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.contact;
+const fields: Array<{ label: string; type: "text" | "email" | "tel" }> = [
+  { label: "お名前", type: "text" },
+  { label: "会社名", type: "text" },
+  { label: "メールアドレス", type: "email" },
+  { label: "電話番号", type: "tel" },
+  { label: "物件所在地", type: "text" },
+  { label: "月間売上目安", type: "text" }
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="無料相談">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">CONTACT</p>
+      <h1>無料相談・管理控除後シミュレーション</h1>
+      <p>
+        現在の管理費や月間売上が分かる範囲で構いません。乗り換えた場合に管理費・清掃費の控除後に残る金額を試算し、清掃・リネンサプライ・OTA運用・現地対応の導線を確認します。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <SectionHeading
+          align="left"
+          label="FORM"
+          title="公開前に外部フォームを接続します。"
+          lead="問い合わせは外部フォームサービスを使用予定です。正式URLが確定するまで、このページでは入力項目のプレースホルダーを表示しています。"
+        />
+        <div class="card">
+          <h3>相談時にあると試算しやすい情報</h3>
+          <ul class="check-list">
+            <li>物件所在地・間取り・面積</li>
+            <li>現在の管理会社有無</li>
+            <li>現在の管理費・清掃費・リネンサプライ費</li>
+            <li>月間売上目安・清掃回数</li>
+            <li>清掃品質や現地対応で困っていること</li>
+          </ul>
+        </div>
+      </div>
+      <form class="form-panel form-disabled" aria-label="問い合わせフォームのプレースホルダー">
+        <div class="form-grid">
+          {fields.map((field) => (
+            <div class="form-field">
+              <label>{field.label}</label>
+              <input type={field.type} placeholder="公開前に外部フォームへ接続" disabled />
+            </div>
+          ))}
+          <div class="form-field full">
+            <label>物件タイプ</label>
+            <select disabled>
+              <option>1R〜1LDK</option>
+              <option>2LDK</option>
+              <option>3LDK以上</option>
+              <option>戸建て・大型物件</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>相談内容</label>
+            <textarea placeholder="現在の管理費、清掃品質、リネンサプライ、現地対応など" disabled></textarea>
+          </div>
+        </div>
+        <p class="notes">外部フォームURLが確定次第、送信可能なフォームまたは外部リンクに差し替えます。</p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

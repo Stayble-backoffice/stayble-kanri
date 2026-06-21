@@ -1,0 +1,76 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import CleaningCostTable from "../../components/CleaningCostTable.astro";
+import ComparisonChart from "../../components/ComparisonChart.astro";
+import PriceCards from "../../components/PriceCards.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.pricing;
+const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗品費（任意）", "ゴミ処理関連費", "駆け付け費", "その他実費"];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="料金">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">PRICE</p>
+      <h1>民泊管理費を見直すなら、月額固定費と売上歩合を分けて考える。</h1>
+      <p>
+        Staybleの管理費は、物件規模別の月額固定費と売上歩合5%で構成されます。清掃費・リネンサプライ費などの実費と分けて、費用構造を見える化します。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        label="MANAGEMENT FEE"
+        title="管理費 月額5,000円〜 + 売上5%"
+        lead="初期費用0円、写真撮影0円、OTA初期立ち上げ0円。乗り換え導入に必要な範囲を標準対応します。"
+      />
+      <PriceCards />
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container split">
+      <div>
+        <p class="section-label">COST STRUCTURE</p>
+        <h2>管理費以外に発生する費用</h2>
+        <p>
+          管理費以外は、物件条件や運用内容により変動します。見積もり時に清掃導線、リネンサプライ方式、消耗品利用有無、現地対応範囲を確認します。
+        </p>
+      </div>
+      <div class="card">
+        <ul class="check-list">
+          {costItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cost">
+    <div class="container">
+      <SectionHeading
+        label="REFERENCE"
+        title="1回あたりの清掃・リネンサプライ費用の見方"
+        lead="清掃費だけでなく、リネンサプライ費・消耗品・ゴミ処理関連費まで分けて確認します。管理費とは別に、物件条件や運用方式に応じて見積もります。"
+      />
+      <CleaningCostTable />
+    </div>
+  </section>
+
+  <section class="section section-muted" id="simulation">
+    <div class="container">
+      <SectionHeading
+        label="SIMULATION"
+        title="管理控除後シミュレーション"
+        lead="比較は管理費と清掃費を控除した後の金額を見える化するための概算です。売上や稼働率、最終利益を保証するものではありません。"
+      />
+      <ComparisonChart />
+    </div>
+  </section>
+
+  <CTA title="現在の管理費と比較します" text="売上、清掃回数、現在の管理費が分かる範囲で構いません。乗り換え後の概算を整理します。" />
+</BaseLayout>

@@ -1,0 +1,89 @@
+﻿---
+import { simulationNotes } from "../data/site";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const comparisonItems = [
+  {
+    label: "一般的な管理会社の例",
+    modifier: "",
+    owner: "180,000円",
+    ownerHeight: "60%",
+    cleaningLabel: "清掃費",
+    cleaning: "60,000円",
+    cleaningHeight: "20%",
+    managementLabel: "管理費 20%",
+    management: "60,000円",
+    managementHeight: "20%",
+    note: "清掃費12,000円/回に、管理会社側の調整コストや上乗せが含まれる想定例です。"
+  },
+  {
+    label: "Staybleの乗り換え民泊管理",
+    modifier: "stayble-card",
+    owner: "227,000円",
+    ownerHeight: "75.67%",
+    cleaningLabel: "清掃費",
+    cleaning: "50,000円",
+    cleaningHeight: "16.67%",
+    managementLabel: "管理費",
+    management: "23,000円",
+    managementHeight: "7.66%",
+    note: "清掃費10,000円/回で、清掃会社の直接運用として計算しています。管理費は月額8,000円 + 売上5%の想定です。"
+  }
+];
+
+const assumptions = [
+  "規模B / 2LDK想定",
+  "月間売上300,000円",
+  "15泊/月・チェックアウト5回",
+  "一般管理会社の清掃費: 12,000円/回（管理会社マージン込み）",
+  "Staybleの清掃費: 10,000円/回（清掃会社の直接運用）"
+];
+---
+
+<div class:list={["comparison-wrap", compact && "comparison-compact"]}>
+  <div class="comparison-summary">
+    <p class="section-label">SIMULATION</p>
+    <h3>月間売上300,000円・規模Bの場合</h3>
+    <p>
+      規模B相当の物件で、管理費と清掃費を控除した後に残る金額を比較します。オーナー側の借上賃料、消耗品費、税金、ローン等は含めていません。
+    </p>
+    <div class="comparison-highlight">
+      <span>この条件例の差額</span>
+      <strong>月47,000円</strong>
+    </div>
+  </div>
+  <div class="assumption-strip" aria-label="シミュレーション前提">
+    {assumptions.map((item) => <span>{item}</span>)}
+  </div>
+  <div class="comparison-bars" aria-label="管理控除後シミュレーションの積み上げ比較">
+    {comparisonItems.map((item) => (
+      <article class:list={["comparison-card", item.modifier]}>
+        <h4>{item.label}</h4>
+        <div class="stack-bar">
+          <div class="bar-segment owner" style={`height: ${item.ownerHeight}`}>
+            <span><em>管理控除後の手残り</em><strong>{item.owner}</strong></span>
+          </div>
+          <div class="bar-segment cleaning" style={`height: ${item.cleaningHeight}`}>
+            <span><em>{item.cleaningLabel}</em><strong>{item.cleaning}</strong></span>
+          </div>
+          <div class="bar-segment management" style={`height: ${item.managementHeight}`}>
+            <span><em>{item.managementLabel}</em><strong>{item.management}</strong></span>
+          </div>
+        </div>
+        <p class="bar-note">{item.note}</p>
+      </article>
+    ))}
+  </div>
+  <div class="comparison-callouts">
+    <p><strong>清掃費マージンの見え方</strong> 管理会社が清掃を外注する構造では、清掃会社の原価に管理会社側の調整コストが乗る場合があります。</p>
+    <p><strong>Staybleの見え方</strong> 清掃会社が管理を請け負うため、清掃・リネンサプライ・報告導線を一体で設計できます。</p>
+  </div>
+  <ul class="notes">
+    {simulationNotes.map((note) => <li>{note}</li>)}
+  </ul>
+</div>

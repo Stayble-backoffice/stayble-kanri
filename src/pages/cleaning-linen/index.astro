@@ -1,0 +1,128 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import CleaningCostTable from "../../components/CleaningCostTable.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.cleaning;
+const strengths = [
+  {
+    title: "1部屋1名の個人制",
+    text: "清掃員は常に1部屋につき1名で入室。責任の所在を個人単位で明確にします。"
+  },
+  {
+    title: "個人単位の品質追跡",
+    text: "誰がどの物件を担当したか追跡し、改善が必要な箇所を運用へ反映します。"
+  },
+  {
+    title: "抜き打ちチェッカー体制",
+    text: "専任チェッカーが定期的に物件を訪問し、清掃品質の実地検査を行います。"
+  },
+  {
+    title: "定型写真報告",
+    text: "毎回同じ枚数・同じアングルで撮影し、比較・検証しやすい報告を残します。"
+  }
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="清掃・リネンサプライ">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">CLEANING & LINEN SUPPLY</p>
+      <h1>清掃品質まで責任を持つため、清掃・リネンサプライはStaybleセット契約です。</h1>
+      <p>
+        民泊運営のレビューを左右するのは、清掃・リネンサプライ・備品・現地の細部です。Staybleは清掃管理の現場基盤を持つ会社として、管理側からも品質を追跡します。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">WHY SET</p>
+        <h2>既存清掃会社の継続はできません。</h2>
+        <p>
+          清掃品質まで責任を持つため、清掃・リネンサプライはStaybleセット契約です。報告、写真、鍵、リネンサプライ導線を統一し、外注任せで見えにくくなる品質のばらつきを抑えます。
+        </p>
+      </div>
+      <div class="card">
+        <h3>Staybleの清掃管理実績</h3>
+        <ul class="check-list">
+          <li>民泊清掃管理 約240室</li>
+          <li>年間清掃 約15,000件</li>
+          <li>約50名の清掃員ネットワーク</li>
+          <li>清掃会社として培った現場運用力</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <SectionHeading
+        label="QUALITY"
+        title="品質を属人的にしないための運用"
+        lead="清掃品質は、現場に入る人・報告の粒度・チェックの頻度で変わります。Staybleは個人単位で品質を追跡します。"
+      />
+      <div class="grid-4">
+        {strengths.map((item, index) => (
+          <article class="card">
+            <span class="number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        label="COST"
+        title="清掃・リネンサプライ費用は、1回あたりで分けて確認します。"
+        lead="清掃会社が直接運用するため、清掃費・リネンサプライ費・消耗品・ゴミ処理関連費を分けて設計できます。管理会社経由の見えにくい上乗せを避けやすい構造です。"
+      />
+      <CleaningCostTable showLinenUnits />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">LINEN SUPPLY</p>
+        <h2>リネンサプライは標準対応。物件ごとに方式を選びます。</h2>
+        <p>
+          収納スペースや清掃導線に応じて、都度集配型・ストック型を使い分けます。リネンサプライを探す手間を減らし、清掃と一体で運用します。
+        </p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>都度集配型</h3>
+          <p>保管スペースが限られる物件や、リネンサプライ量を柔軟に調整したい物件向け。必要分だけ動かすため、初期の在庫負担を抑えやすい方式です。</p>
+        </article>
+        <article class="card">
+          <h3>ストック型</h3>
+          <p>物件内に一定量を保管し、清掃回数や繁忙期に合わせて補充しやすい方式。入替頻度が高い物件では、集配回数を抑える設計ができます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-band">
+    <div class="container split">
+      <div>
+        <p class="section-label">SUPPLIES</p>
+        <h2>消耗品管理は任意オプションです。</h2>
+      </div>
+      <div class="card">
+        <p>
+          利用する場合は、対象ラインナップ内で在庫管理・補充まで対応します。利用しない場合でも、清掃時に気づいた在庫状況を報告します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTA title="清掃品質から管理会社を見直す" text="現在の清掃報告やレビュー状況をもとに、Staybleセット契約で改善できる導線を確認します。" />
+</BaseLayout>

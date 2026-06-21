@@ -1,0 +1,105 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta, switchingFlow } from "../../data/site";
+
+const meta = pageMeta.switching;
+const pains = [
+  "管理費が重く、売上が伸びても管理控除後の残額が増えにくい",
+  "清掃品質や報告写真が安定せず、レビュー面が不安",
+  "リネンサプライ・備品・鍵・現地対応の窓口が分かれすぎている",
+  "フル代行の見栄えより、現場が回る管理会社へ変えたい"
+];
+const freeItems = ["初期費用0円", "写真撮影0円", "OTA初期立ち上げ0円", "簡易収益シミュレーション0円"];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="乗り換え">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">SWITCHING</p>
+      <h1>開業済み民泊のための、管理会社乗り換え。</h1>
+      <p>
+        これから民泊を始める方向けではなく、すでに運用中で、管理費・清掃品質・リネンサプライ・現地対応に不満があるオーナー向けのサービスです。
+      </p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="/contact/">無料相談する</a>
+        <a class="btn btn-secondary" href="/pricing/">料金を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading label="ISSUES" title="こんな不満はありませんか？" />
+      <div class="grid-4">
+        {pains.map((pain, index) => (
+          <article class="card">
+            <span class="number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{pain}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container split">
+      <div>
+        <p class="section-label">ABOUT</p>
+        <h2>乗り換え民泊管理とは</h2>
+        <p>
+          開業支援や申請代行を主目的にせず、運用中の民泊に必要な管理・清掃・リネンサプライ・OTA運用・現地対応を、Staybleの現場基盤で引き受けます。
+        </p>
+      </div>
+      <div class="grid-2">
+        {freeItems.map((item) => (
+          <article class="card">
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        label="FLOW"
+        title="乗り換えの流れ"
+        lead="既存運用を確認しながら、清掃・リネンサプライ導線とOTA運用を新しく整備します。"
+      />
+      <div class="flow-list">
+        {switchingFlow.map((step, index) => (
+          <article class="card flow-card">
+            <span class="number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-band">
+    <div class="container split">
+      <div>
+        <p class="section-label">OTA SETUP</p>
+        <h2>OTA運用はStayble側で新しく整備します。</h2>
+      </div>
+      <div class="card">
+        <p>
+          原則として既存OTAアカウントの引き継ぎは行いません。Stayble側で新しく運用環境を立ち上げ、オーナー様には補助ホストとして必要な確認に参加いただきます。
+        </p>
+        <ul class="check-list">
+          <li>OTA掲載内容の作成・整備</li>
+          <li>Stayble標準撮影写真の反映</li>
+          <li>メッセージ対応・レビュー返信</li>
+          <li>簡易的な価格調整・カレンダー調整</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

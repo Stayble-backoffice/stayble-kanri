@@ -1,0 +1,47 @@
+---
+import { navItems } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-brand" href="/">
+        <img src="/images/stayble-logo-cropped.png" alt="Stayble" width="220" height="94" />
+      </a>
+      <p>
+        開業済み民泊オーナー向けの「乗り換え民泊管理」。札幌市全区（一部郊外を除く）を中心に、小樽・千歳・恵庭・北広島・江別まで対応します。
+      </p>
+      <p class="footer-note">
+        住宅宿泊管理業務としての提供範囲・開始時期は、必要な手続き完了後に正式案内します。
+      </p>
+    </div>
+    <div>
+      <h2>サイト内リンク</h2>
+      <ul class="footer-links">
+        <li><a href="/">トップ</a></li>
+        {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        <li><a href="/contact/">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>会社情報</h2>
+      <dl class="footer-info">
+        <div>
+          <dt>法人名</dt>
+          <dd>株式会社Stayble</dd>
+        </div>
+        <div>
+          <dt>所在地</dt>
+          <dd>札幌市中央区南5条西15丁目2-3-503</dd>
+        </div>
+        <div>
+          <dt>事業</dt>
+          <dd>民泊・バケーションレンタルの清掃管理事業</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Stayble Inc.</span>
+  </div>
+</footer>

@@ -1,0 +1,41 @@
+---
+import { pricePlans, requiredPriceNotes } from "../data/site";
+---
+
+<div class="fee-formula" aria-label="管理費の計算式">
+  <div class="formula-row">
+    <span class="formula-eq">管理費</span>
+    <span class="formula-symbol">=</span>
+    <span class="formula-chip formula-fixed">物件規模別の月額固定費</span>
+    <span class="formula-symbol">+</span>
+    <span class="formula-chip formula-rate">売上歩合5%</span>
+  </div>
+</div>
+
+<div class="price-cards">
+  {pricePlans.map((plan) => (
+    <article class="price-plan-card">
+      <div class="plan-topline">
+        <p class="pill">{plan.name}</p>
+        <span>{plan.tag}</span>
+      </div>
+      <h3>{plan.range}</h3>
+      <p class="plan-for">{plan.bestFor}</p>
+      <div class="plan-price-grid" aria-label={`${plan.name}の管理費内訳`}>
+        <div>
+          <span>月額固定費</span>
+          <strong>{plan.fixed}</strong>
+        </div>
+        <div>
+          <span>売上歩合</span>
+          <strong>{plan.commission}</strong>
+        </div>
+      </div>
+      <p class="price-line">{plan.price}</p>
+      {plan.note && <p class="plan-note">{plan.note}</p>}
+    </article>
+  ))}
+</div>
+<ul class="notes">
+  {requiredPriceNotes.map((note) => <li>{note}</li>)}
+</ul>

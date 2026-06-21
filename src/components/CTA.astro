@@ -1,0 +1,22 @@
+---
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = "今の管理費と比較してみませんか？",
+  text = "物件所在地・月間売上・現在の管理費が分かる範囲で、管理費・清掃費の控除後に残る金額を試算します。"
+} = Astro.props;
+---
+
+<section class="section cta-band">
+  <div class="container cta-panel">
+    <div>
+      <p class="section-label">CONTACT</p>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <a class="btn btn-primary" href="/contact/">無料相談する</a>
+  </div>
+</section>

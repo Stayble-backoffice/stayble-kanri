@@ -1,0 +1,75 @@
+﻿---
+import { cleaningCostRows, linenUnitRows } from "../data/site";
+
+interface Props {
+  showLinenUnits?: boolean;
+}
+
+const { showLinenUnits = false } = Astro.props;
+---
+
+<div class="cost-table-wrap">
+  <div class="table-card cost-table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>間取り</th>
+          <th>清掃費</th>
+          <th>リネンサプライ費</th>
+          <th>消耗品</th>
+          <th>ゴミ処理関連</th>
+          <th>1回あたり合計</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cleaningCostRows.map((item) => (
+          <tr>
+            <td><strong>{item.layout}</strong></td>
+            <td>{item.cleaning}</td>
+            <td>{item.linen}</td>
+            <td>{item.supplies}</td>
+            <td>{item.waste}</td>
+            <td><strong>{item.total}</strong></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li>※清掃費は参考料金です。正式な金額は物件確認後に個別見積もりとなります。</li>
+    <li>※都度集配型は「単価 × 最大必要枚数 + 集配手数料 ¥550〜」、ストック型は「単価 × 発注枚数 + 集配手数料 ¥2,200 / 月」で計算します。</li>
+    <li>※管理費とは別に発生します。</li>
+  </ul>
+</div>
+
+{showLinenUnits && (
+  <div class="linen-unit-panel">
+    <div>
+      <p class="section-label">LINEN SUPPLY PRICE</p>
+      <h3>リネンサプライ単価の確認項目</h3>
+      <p>
+        PDF記載のリネンサプライ単価をもとに、物件ごとの最大必要枚数または発注枚数で計算します。
+      </p>
+    </div>
+    <div class="table-card compact-table">
+      <table>
+        <thead>
+          <tr>
+            <th>品目</th>
+            <th>サイズ</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+        <tbody>
+          {linenUnitRows.map((item) => (
+            <tr>
+              <td>{item.item}</td>
+              <td>{item.size}</td>
+              <td>{item.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}

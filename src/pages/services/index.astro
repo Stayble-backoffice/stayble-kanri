@@ -1,0 +1,120 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import AreaShowcase from "../../components/AreaShowcase.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.services;
+const standardServices = [
+  "衛生管理・安全管理の運用支援",
+  "外国人宿泊者向け案内",
+  "宿泊者名簿の作成・保管",
+  "周辺環境への悪影響防止に関する説明",
+  "苦情・問い合わせ対応",
+  "定期報告",
+  "清掃・リネンサプライ運用",
+  "OTA運用・簡易的な価格調整",
+  "必要に応じた現地対応"
+];
+const notIncluded = [
+  "申請代行・行政書士業務",
+  "許認可コンサル",
+  "物件選定・不動産購入サポート",
+  "内装工事・消防設備工事そのもの",
+  "宿泊税・税務申告代行",
+  "宿泊施設の収益保証"
+];
+const partners = ["行政書士", "消防設備関連", "内装・修繕業者", "鍵・スマートロック業者", "その他専門業者"];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="サービス内容">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">SERVICES</p>
+      <h1>開業済み民泊の運用に必要な業務を、現場から組み直します。</h1>
+      <p>
+        住宅宿泊事業法に基づく開業済み民泊を主対象としています。旅館業・簡易宿所については個別にご相談ください。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        label="STANDARD"
+        title="標準対応する業務"
+        lead="法令・地域ルールに配慮しながら、運用中物件の管理に必要な範囲を整理して対応します。"
+      />
+      <div class="grid-3">
+        {standardServices.map((item) => (
+          <article class="card">
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container split">
+      <div>
+        <p class="section-label">SCOPE</p>
+        <h2>やらない業務も明確にします。</h2>
+        <p>
+          Staybleは、すでに運用中の民泊管理に特化します。申請代行や工事そのものは行わず、必要に応じて専門家をご紹介します。
+        </p>
+      </div>
+      <div class="card">
+        <ul class="check-list">
+          {notIncluded.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">OPERATIONS</p>
+        <h2>OTA・PMS・宿泊者名簿を運用に合わせて整理。</h2>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>OTA運用</h3>
+          <p>
+            OTA初期立ち上げ、掲載文作成、標準撮影写真の反映、メッセージ対応、レビュー返信、カレンダー調整に対応します。
+          </p>
+        </article>
+        <article class="card">
+          <h3>PMS・宿泊者名簿</h3>
+          <p>
+            AirHostやBeds24等を想定し、予約管理、宿泊者名簿管理、OTA/PMS情報の照合、宿泊記録の保存を行います。
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-band">
+    <div class="container split">
+      <div>
+        <p class="section-label">PARTNERS</p>
+        <h2>専門領域は提携先紹介で対応します。</h2>
+      </div>
+      <div class="card">
+        <ul class="check-list">
+          {partners.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <AreaShowcase />
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

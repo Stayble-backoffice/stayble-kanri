@@ -1,0 +1,72 @@
+﻿---
+const areaCards = [
+  {
+    name: "札幌市",
+    lead: "札幌市全区（一部郊外を除く）",
+    text: "中心部から郊外物件まで、清掃・リネンサプライ・現地対応の導線を個別に設計します。"
+  },
+  {
+    name: "小樽市",
+    lead: "観光需要のある近隣エリア",
+    text: "札幌近隣の運用導線として、物件所在地や季節条件を確認します。"
+  },
+  {
+    name: "千歳市・恵庭市",
+    lead: "空港動線を意識するエリア",
+    text: "移動時間と清掃スケジュールを見ながら、無理のない運用を組みます。"
+  },
+  {
+    name: "北広島市・江別市",
+    lead: "札幌周辺の住宅地エリア",
+    text: "周辺環境や鍵導線を確認し、現地対応の範囲を整理します。"
+  }
+];
+
+const pins = [
+  { name: "札幌", className: "pin-sapporo" },
+  { name: "小樽", className: "pin-otaru" },
+  { name: "千歳", className: "pin-chitose" },
+  { name: "恵庭", className: "pin-eniwa" },
+  { name: "北広島", className: "pin-kitahiroshima" },
+  { name: "江別", className: "pin-ebetsu" }
+];
+---
+
+<div class="area-showcase">
+  <div class="area-intro">
+    <p class="section-label">AREA</p>
+    <h2>対応エリア</h2>
+    <p class="area-lead">札幌を中心に、近隣エリアまで広く対応。</p>
+    <p>
+      札幌市全区（一部郊外を除く）を中心に、小樽・千歳・恵庭・北広島・江別まで対応しています。季節・道路状況・物件所在地により、清掃・リネンサプライ・現地対応の導線は個別に確認します。
+    </p>
+  </div>
+
+  <div class="area-map" aria-label="北海道内の対応エリア分布イメージ">
+    <div class="hokkaido-map">
+      <img src="/images/hokkaido-admin-map-transparent.png" alt="北海道の行政区分地図" loading="lazy" />
+      {pins.map((pin) => (
+        <span class:list={["hokkaido-pin", pin.className]}>
+          <i aria-hidden="true"></i>
+          <strong>{pin.name}</strong>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <div class="area-card-grid">
+    {areaCards.map((area) => (
+      <article class="area-card">
+        <span class="area-icon" aria-hidden="true">{area.name.slice(0, 1)}</span>
+        <h3>{area.name}</h3>
+        <p class="area-card-lead">{area.lead}</p>
+        <p>{area.text}</p>
+      </article>
+    ))}
+  </div>
+
+  <a class="area-wide-link" href="/contact/">
+    <span>その他の近隣エリアも個別にご相談ください</span>
+    <strong>恵庭市・江別市の一部郊外など</strong>
+  </a>
+</div>

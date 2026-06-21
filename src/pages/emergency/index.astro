@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTA from "../../components/CTA.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.emergency;
+const emergencyItems = ["火災・煙", "ガス", "水漏れ", "鍵トラブル", "設備停止", "警察・消防・医療機関連絡"];
+const lightItems = ["備品追加", "タオル追加", "家電操作説明", "忘れ物回収・発送", "家具移動", "非緊急の現地確認"];
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="駆け付け・緊急対応">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">EMERGENCY</p>
+      <h1>民泊の駆け付け・緊急対応を、現地運用とつなげます。</h1>
+      <p>
+        通常の現地対応は8:00〜22:00。22時以降は、火災・水漏れ・ガス・鍵トラブルなど緊急性の高い事案に限定して対応します。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">HOURS</p>
+        <h2>通常対応と深夜帯の範囲を分けます。</h2>
+        <p>
+          深夜帯は法定管理上必要な最低限の緊急対応を中心にします。季節・道路状況・イベント・物件所在地により到着時間は変動します。
+        </p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>通常現地対応</h3>
+          <p class="price-line">8:00〜22:00</p>
+          <p>ゲスト対応、備品追加、非緊急の現地確認などを内容に応じて対応します。</p>
+        </article>
+        <article class="card">
+          <h3>22時以降</h3>
+          <p class="price-line">緊急性の高い事案に限定</p>
+          <p>火災・水漏れ・ガス・鍵トラブルなど、必要性の高いものに絞って対応します。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <SectionHeading label="SCOPE" title="対応範囲" lead="緊急対応と軽微対応を分け、オーナー様に後日報告します。" />
+      <div class="grid-2">
+        <article class="card">
+          <h3>緊急性の高い事案</h3>
+          <ul class="check-list">
+            {emergencyItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+        <article class="card">
+          <h3>軽微対応</h3>
+          <ul class="check-list">
+            {lightItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="section-label">FEE</p>
+        <h2>駆け付け対応は固定料金制です。</h2>
+        <p>
+          具体的な料金は契約前のご案内で提示します。現地対応後は、解決状況にかかわらず対応内容をオーナー様へ報告します。
+        </p>
+      </div>
+      <div class="card">
+        <ul class="check-list">
+          <li>固定料金制</li>
+          <li>内容に応じて移動費実費が発生する場合があります</li>
+          <li>22時以降は深夜割増が発生する場合があります</li>
+          <li>専門業者が必要な場合は状況確認・応急対応・手配案内まで行います</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTA title="現地対応の範囲を確認する" text="物件所在地、鍵の導線、設備状況を確認し、対応可能な範囲を整理します。" />
+</BaseLayout>

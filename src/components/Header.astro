@@ -1,0 +1,16 @@
+---
+import { navItems } from "../data/site";
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Stayble 乗り換え民泊管理 トップ">
+      <img src="/images/stayble-logo-cropped.png" alt="Stayble" width="220" height="94" />
+      <span>乗り換え民泊管理</span>
+    </a>
+    <nav class="site-nav" aria-label="主要ナビゲーション">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="btn btn-primary header-cta" href="/contact/">無料相談する</a>
+  </div>
+</header>
