@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AreaShowcase from "../../components/AreaShowcase.astro";
+import CTA from "../../components/CTA.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { pageMeta } from "../../data/site";
+
+const meta = pageMeta.area;
+
+const operationChecks = [
+  {
+    title: "清掃・リネンサプライ導線",
+    text: "清掃日程、リネンサプライの集配方法、物件内の保管スペースを確認し、地域と物件に合う運用を組みます。"
+  },
+  {
+    title: "冬季・繁忙期の移動条件",
+    text: "積雪や道路状況、イベント開催時の混雑も考慮し、無理のない清掃・現地対応の範囲を個別に確認します。"
+  },
+  {
+    title: "鍵・設備・現地対応",
+    text: "鍵の受け渡し方法、設備状況、専門業者への連絡導線を事前に整理し、駆け付け時の判断を明確にします。"
+  }
+];
+
+const areaGroups = [
+  {
+    title: "札幌市",
+    coverage: "全10区（一部郊外を除く）",
+    text: "中央区・北区・東区・白石区・豊平区・南区・西区・厚別区・手稲区・清田区を対象に、物件所在地と清掃導線を確認します。"
+  },
+  {
+    title: "小樽市",
+    coverage: "物件所在地・季節条件を個別確認",
+    text: "札幌側からの移動経路、冬季の道路状況、リネンサプライ集配と現地対応の導線を確認して対応可否を判断します。"
+  },
+  {
+    title: "千歳市・恵庭市",
+    coverage: "清掃時間と移動導線を個別設計",
+    text: "予約の入れ替え時間、清掃スタッフとリネンサプライの移動、現地対応の範囲を物件ごとに整理します。"
+  },
+  {
+    title: "北広島市・江別市",
+    coverage: "札幌近郊の運用導線として確認",
+    text: "周辺環境、鍵の受け渡し、清掃スケジュール、冬季の移動条件を確認したうえで運用を設計します。"
+  }
+];
+
+const areaFaqs = [
+  {
+    question: "札幌市は全区対応ですか？",
+    answer: "札幌市全10区を対象としていますが、一部郊外は物件所在地と運用条件を確認して対応可否を判断します。"
+  },
+  {
+    question: "小樽・千歳・恵庭・北広島・江別以外も相談できますか？",
+    answer: "近隣エリアは個別相談を受け付けています。清掃・リネンサプライ・現地対応の導線を継続して組めるかを確認します。"
+  },
+  {
+    question: "駆け付けの到着時間は決まっていますか？",
+    answer: "一律の到着時間は案内していません。季節、道路状況、イベント、物件所在地により変わるため、契約前に対応範囲を個別に確認します。"
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: areaFaqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="対応エリア" schema={faqSchema}>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">SERVICE AREA</p>
+      <h1>札幌を中心に、小樽・千歳・恵庭・北広島・江別まで対応。</h1>
+      <p>
+        札幌市全区（一部郊外を除く）を主対応エリアとして、清掃・リネンサプライ・OTA運用・現地対応の導線を物件ごとに確認します。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <AreaShowcase showDetailLink={false} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        label="OPERATION CHECK"
+        title="住所だけでなく、現場が継続して回るかを確認します。"
+        lead="対応可否は市名だけで決めず、清掃・リネンサプライ・鍵・冬季移動・現地対応を一体で確認します。"
+      />
+      <div class="grid-3">
+        {operationChecks.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <SectionHeading
+        label="AREA DETAILS"
+        title="地域ごとの確認ポイント"
+        lead="地域名だけを差し替えた案内ではなく、各エリアで確認する運用条件を整理しています。"
+      />
+      <div class="grid-2">
+        {areaGroups.map((area) => (
+          <article class="card area-detail-card">
+            <p class="pill">{area.coverage}</p>
+            <h3>{area.title}</h3>
+            <p>{area.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="button-row">
+        <a class="btn btn-secondary" href="/cleaning-linen/">清掃・リネンサプライを見る</a>
+        <a class="btn btn-secondary" href="/emergency/">駆け付け対応を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading label="AREA FAQ" title="対応エリアのよくある質問" />
+      <div class="faq-list">
+        {areaFaqs.map((item) => (
+          <details class="faq-item">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA title="物件所在地から対応可否を確認します" text="住所、間取り、清掃状況、鍵の導線が分かる範囲でご相談ください。" />
+</BaseLayout>

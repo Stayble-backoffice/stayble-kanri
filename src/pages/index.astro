@@ -100,17 +100,6 @@ const services = [
           </article>
         ))}
       </div>
-      <div class="mobile-insight-list mobile-only">
-        {problems.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -155,17 +144,6 @@ const services = [
           </article>
         ))}
       </div>
-      <div class="mobile-insight-list mobile-only">
-        {reasons.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -189,14 +167,6 @@ const services = [
         ))}
       </div>
     </div>
-    <div class="container mobile-service-summary mobile-only">
-      <p class="section-label">SERVICE</p>
-      <h2>運用中物件に必要な業務だけを、現場基盤でまとめます。</h2>
-      <ul>
-        {services.slice(0, 5).map((item) => <li>{item}</li>)}
-      </ul>
-      <a class="btn btn-secondary" href="/services/">サービス内容を見る</a>
-    </div>
   </section>
 
   <section class="section">
@@ -219,17 +189,6 @@ const services = [
         </ul>
       </div>
     </div>
-    <div class="container mobile-service-summary mobile-only">
-      <p class="section-label">CLEANING & LINEN SUPPLY</p>
-      <h2>清掃・リネンサプライはStaybleセット契約です。</h2>
-      <ul>
-        <li>民泊清掃管理 約240室</li>
-        <li>年間清掃 約15,000件</li>
-        <li>定型写真報告と品質チェック</li>
-        <li>物件特性に応じたリネンサプライ方式</li>
-      </ul>
-      <a class="btn btn-secondary" href="/cleaning-linen/">清掃・リネンサプライを見る</a>
-    </div>
   </section>
 
   <section class="section section-muted" id="area">
@@ -247,17 +206,6 @@ const services = [
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
-          </article>
-        ))}
-      </div>
-      <div class="mobile-flow-list mobile-only">
-        {switchingFlow.map((step, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </div>
           </article>
         ))}
       </div>

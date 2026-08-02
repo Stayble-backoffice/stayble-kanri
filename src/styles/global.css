@@ -1145,6 +1145,12 @@ h3 {
   color: var(--teal-600);
 }
 
+.area-detail-link {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+}
+
 .faq-list {
   display: grid;
   gap: 14px;
@@ -2263,20 +2269,6 @@ h3 {
 }
 
 @media (max-width: 1023px) {
-  .desktop-price-plans,
-  .desktop-cost-table,
-  .desktop-linen-table,
-  .desktop-comparison-content,
-  .desktop-card-grid,
-  .desktop-flow-list,
-  .desktop-service-split,
-  .desktop-cleaning-split,
-  .area-map,
-  .area-card-grid,
-  .area-wide-link {
-    display: none !important;
-  }
-
   .mobile-price-plans,
   .mobile-cleaning-costs,
   .mobile-linen-units,

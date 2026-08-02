@@ -88,46 +88,4 @@ const assumptions = [
       {simulationNotes.map((note) => <li>{note}</li>)}
     </ul>
   </div>
-
-  <div class="mobile-comparison-content mobile-only" aria-label="スマートフォン向け管理控除後シミュレーション">
-    <div class="mobile-comparison-head">
-      <p class="section-label">SIMULATION</p>
-      <h3>同じ売上でも、残る金額は変わります。</h3>
-      <p>月間売上300,000円、清掃5回の条件例。管理費と清掃費を控除した後の比較です。</p>
-      <strong>差額 月47,000円</strong>
-    </div>
-    <div class="mobile-comparison-cards">
-      {comparisonItems.map((item) => (
-        <article class:list={["mobile-comparison-card", item.modifier === "stayble-card" && "is-stayble"]}>
-          <span>{item.label}</span>
-          <div class="mobile-owner-amount">
-            <small>管理控除後の手残り</small>
-            <strong>{item.owner}</strong>
-          </div>
-          <dl>
-            <div>
-              <dt>{item.managementLabel}</dt>
-              <dd>{item.management}</dd>
-            </div>
-            <div>
-              <dt>{item.cleaningLabel}</dt>
-              <dd>{item.cleaning}</dd>
-            </div>
-          </dl>
-          <p>{item.note}</p>
-        </article>
-      ))}
-    </div>
-    <div class="mobile-margin-note">
-      <strong>清掃会社が運営するため、清掃費の上乗せ構造を抑えやすい比較です。</strong>
-      <span>一般管理会社は12,000円/回、Staybleは10,000円/回の条件例で計算しています。</span>
-    </div>
-    <details class="mobile-note-box">
-      <summary>前提と注釈を見る</summary>
-      <ul>
-        {assumptions.map((item) => <li>{item}</li>)}
-        {simulationNotes.map((note) => <li>{note}</li>)}
-      </ul>
-    </details>
-  </div>
 </div>

@@ -54,11 +54,6 @@ const partners = ["行政書士", "消防設備関連", "内装・修繕業者",
           </article>
         ))}
       </div>
-      <div class="mobile-service-summary mobile-only">
-        <ul>
-          {standardServices.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -76,14 +71,6 @@ const partners = ["行政書士", "消防設備関連", "内装・修繕業者",
           {notIncluded.map((item) => <li>{item}</li>)}
         </ul>
       </div>
-    </div>
-    <div class="container mobile-scope-list mobile-only">
-      <p class="section-label">SCOPE</p>
-      <h2>やらない業務</h2>
-      <p>専門領域は必要に応じて提携先を紹介します。</p>
-      <ul>
-        {notIncluded.map((item) => <li>{item}</li>)}
-      </ul>
     </div>
   </section>
 
@@ -108,20 +95,6 @@ const partners = ["行政書士", "消防設備関連", "内装・修繕業者",
         </article>
       </div>
     </div>
-    <div class="container mobile-operation-block mobile-only">
-      <p class="section-label">OPERATIONS</p>
-      <h2>Airbnb運用代行・OTA運用も一体で整理します。</h2>
-      <div>
-        <article>
-          <strong>OTA運用</strong>
-          <span>掲載文、写真反映、メッセージ対応、レビュー返信、カレンダー調整。</span>
-        </article>
-        <article>
-          <strong>PMS・宿泊者名簿</strong>
-          <span>予約管理、宿泊者名簿管理、宿泊記録の保存導線を整理。</span>
-        </article>
-      </div>
-    </div>
   </section>
 
   <section class="section feature-band">
@@ -135,13 +108,6 @@ const partners = ["行政書士", "消防設備関連", "内装・修繕業者",
           {partners.map((item) => <li>{item}</li>)}
         </ul>
       </div>
-    </div>
-    <div class="container mobile-scope-list mobile-only">
-      <p class="section-label">PARTNERS</p>
-      <h2>必要な専門領域は紹介でつなぎます。</h2>
-      <ul>
-        {partners.map((item) => <li>{item}</li>)}
-      </ul>
     </div>
   </section>
 

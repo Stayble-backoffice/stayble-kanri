@@ -41,38 +41,3 @@ import { pricePlans, requiredPriceNotes } from "../data/site";
     {requiredPriceNotes.map((note) => <li>{note}</li>)}
   </ul>
 </div>
-
-<div class="mobile-price-plans mobile-only" aria-label="スマートフォン向け管理費プラン">
-  <div class="mobile-fee-key">
-    <span>管理費</span>
-    <strong>月額固定費 + 売上5%</strong>
-    <small>清掃費・リネンサプライ費などの実費は別途</small>
-  </div>
-  <div class="mobile-plan-stack">
-    {pricePlans.map((plan) => (
-      <article class="mobile-plan-card">
-        <div>
-          <span>{plan.name}</span>
-          <h3>{plan.range}</h3>
-        </div>
-        <dl>
-          <div>
-            <dt>固定</dt>
-            <dd>{plan.fixed.replace("月額", "")}</dd>
-          </div>
-          <div>
-            <dt>歩合</dt>
-            <dd>{plan.commission}</dd>
-          </div>
-        </dl>
-        <p>{plan.bestFor}</p>
-      </article>
-    ))}
-  </div>
-  <details class="mobile-note-box">
-    <summary>料金の注釈を見る</summary>
-    <ul>
-      {requiredPriceNotes.map((note) => <li>{note}</li>)}
-    </ul>
-  </details>
-</div>

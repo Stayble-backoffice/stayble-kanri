@@ -40,16 +40,6 @@ const freeItems = ["初期費用0円", "写真撮影0円", "OTA初期立ち上�
           </article>
         ))}
       </div>
-      <div class="mobile-insight-list mobile-only">
-        {pains.map((pain, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{pain}</h3>
-            </div>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -70,14 +60,6 @@ const freeItems = ["初期費用0円", "写真撮影0円", "OTA初期立ち上�
         ))}
       </div>
     </div>
-    <div class="container mobile-service-summary mobile-only">
-      <p class="section-label">ABOUT</p>
-      <h2>乗り換え時の初期負担を抑えます。</h2>
-      <ul>
-        {freeItems.map((item) => <li>{item}</li>)}
-      </ul>
-      <p>開業支援ではなく、運用中物件の管理・清掃・リネンサプライ・OTA運用・現地対応を組み直すサービスです。</p>
-    </div>
   </section>
 
   <section class="section">
@@ -93,17 +75,6 @@ const freeItems = ["初期費用0円", "写真撮影0円", "OTA初期立ち上�
             <span class="number">{String(index + 1).padStart(2, "0")}</span>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
-          </article>
-        ))}
-      </div>
-      <div class="mobile-flow-list mobile-only">
-        {switchingFlow.map((step, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </div>
           </article>
         ))}
       </div>
@@ -126,20 +97,6 @@ const freeItems = ["初期費用0円", "写真撮影0円", "OTA初期立ち上�
           <li>メッセージ対応・レビュー返信</li>
           <li>簡易的な価格調整・カレンダー調整</li>
         </ul>
-      </div>
-    </div>
-    <div class="container mobile-operation-block mobile-only">
-      <p class="section-label">OTA SETUP</p>
-      <h2>OTA運用は新しく整備します。</h2>
-      <div>
-        <article>
-          <strong>掲載整備</strong>
-          <span>掲載内容、標準撮影写真、メッセージ対応の導線を作ります。</span>
-        </article>
-        <article>
-          <strong>運用調整</strong>
-          <span>レビュー返信、簡易的な価格調整、カレンダー調整に対応します。</span>
-        </article>
       </div>
     </div>
   </section>

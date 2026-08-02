@@ -228,7 +228,19 @@ GitHub ActionsでビルドしてPagesへデプロイする。
 
 ---
 
-## 10. Codexへの初回依頼文
+## 10. SEO・LLMO運用
+
+最新の監査結果と次回の測定項目は、以下を参照してください。
+
+```txt
+SEO_LLMO_AUDIT_2026-08-02.md
+```
+
+改善版の測定開始日は2026年8月2日、次回比較予定日は2026年9月2日です。Search Consoleの直近28日と前の28日、インデックス状況、問い合わせ数、同一質問によるAI回答を比較します。
+
+---
+
+## 11. Codexへの初回依頼文
 
 ```txt
 このリポジトリのAGENTS.mdを最初に読み、BUSINESS.md / SERVICE.md / PRICING.md / OPERATIONS.md / LP_STRUCTURE.md / LP_COPY.md / UIDESIGN.md / SEO.md / CONTRACT.md / LEGAL_REFERENCES.md / README.mdに従って、Astroで「乗り換え民泊管理」サイトの初期実装を作成してください。

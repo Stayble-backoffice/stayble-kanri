@@ -42,20 +42,6 @@ const lightItems = ["備品追加", "タオル追加", "家電操作説明", "�
         </article>
       </div>
     </div>
-    <div class="container mobile-operation-block mobile-only">
-      <p class="section-label">HOURS</p>
-      <h2>通常対応と深夜帯を分けて運用します。</h2>
-      <div>
-        <article>
-          <strong>8:00〜22:00</strong>
-          <span>ゲスト対応、備品追加、非緊急の現地確認などに対応します。</span>
-        </article>
-        <article>
-          <strong>22時以降</strong>
-          <span>火災・水漏れ・ガス・鍵トラブルなど緊急性の高い事案に限定します。</span>
-        </article>
-      </div>
-    </div>
   </section>
 
   <section class="section section-muted">
@@ -73,16 +59,6 @@ const lightItems = ["備品追加", "タオル追加", "家電操作説明", "�
           <ul class="check-list">
             {lightItems.map((item) => <li>{item}</li>)}
           </ul>
-        </article>
-      </div>
-      <div class="mobile-emergency-scope mobile-only">
-        <article>
-          <strong>緊急性の高い事案</strong>
-          <div>{emergencyItems.map((item) => <span>{item}</span>)}</div>
-        </article>
-        <article>
-          <strong>軽微対応</strong>
-          <div>{lightItems.map((item) => <span>{item}</span>)}</div>
         </article>
       </div>
     </div>
@@ -105,15 +81,6 @@ const lightItems = ["備品追加", "タオル追加", "家電操作説明", "�
           <li>専門業者が必要な場合は状況確認・応急対応・手配案内まで行います</li>
         </ul>
       </div>
-    </div>
-    <div class="container mobile-scope-list mobile-only">
-      <p class="section-label">FEE</p>
-      <h2>駆け付け対応は固定料金制です。</h2>
-      <ul>
-        <li>内容に応じて移動費実費が発生する場合があります</li>
-        <li>22時以降は深夜割増が発生する場合があります</li>
-        <li>専門業者が必要な場合は状況確認・応急対応・手配案内まで行います</li>
-      </ul>
     </div>
   </section>
 

@@ -1,4 +1,10 @@
 ﻿---
+interface Props {
+  showDetailLink?: boolean;
+}
+
+const { showDetailLink = true } = Astro.props;
+
 const areaCards = [
   {
     name: "札幌市",
@@ -70,14 +76,10 @@ const pins = [
     <strong>恵庭市・江別市の一部郊外など</strong>
   </a>
 
-  <div class="mobile-area-summary mobile-only" aria-label="スマートフォン向け対応エリア">
-    <div class="mobile-area-head">
-      <strong>主な対応エリア</strong>
-      <span>所在地と清掃導線を確認して、対応範囲を個別に判断します。</span>
+  {showDetailLink && (
+    <div class="area-detail-link">
+      <a class="btn btn-secondary" href="/area/">対応エリアを詳しく見る</a>
     </div>
-    <div class="mobile-area-chips">
-      {pins.map((pin) => <span>{pin.name}</span>)}
-    </div>
-    <a href="/contact/">対応可否を相談する</a>
-  </div>
+  )}
+
 </div>

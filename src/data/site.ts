@@ -1,5 +1,7 @@
 ﻿export const SITE_URL = "https://minpaku.stayble.jp/";
 
+export const LAST_UPDATED = "2026-08-02";
+
 export const siteMeta = {
   name: "Stayble 乗り換え民泊管理",
   company: "株式会社Stayble",
@@ -56,6 +58,12 @@ export const pageMeta = {
     description:
       "Staybleの現地対応は8:00〜22:00を基本に、22時以降は火災・水漏れ・ガス・鍵トラブルなど緊急性の高い事案に限定して対応。固定料金制で、対応後はオーナー様へ報告します。"
   },
+  area: {
+    path: "/area/",
+    title: "対応エリア｜札幌・小樽・千歳・恵庭・北広島・江別の民泊管理 Stayble",
+    description:
+      "Staybleの乗り換え民泊管理は、札幌市全区（一部郊外を除く）を中心に、小樽・千歳・恵庭・北広島・江別まで対応。所在地、冬季の移動、清掃・リネンサプライ・現地対応の導線を物件ごとに確認します。"
+  },
   faq: {
     path: "/faq/",
     title: "札幌の民泊管理会社乗り換えFAQ｜料金・清掃・対応エリア Stayble",
@@ -72,7 +80,7 @@ export const pageMeta = {
     path: "/company/",
     title: "会社情報｜株式会社Stayble",
     description:
-      "株式会社Staybleの会社情報。札幌市を中心に、民泊清掃業、住宅宿泊管理業、民泊清掃業務用ソフトウェア提供、Airbnb運用代行を含む民泊運用支援を行います。"
+      "株式会社Staybleの会社情報。札幌市を中心に民泊清掃管理と清掃管理システムを運営し、開業済み民泊向けの乗り換え管理サービス提供に向けた準備を進めています。"
   }
 };
 
