@@ -148,20 +148,25 @@ Googleは`llms.txt`について、Google検索の表示やランキングに正�
 - honeypot入力へアクセシブル名を追加。
 - Astro 6から7へ更新し、依存関係監査を脆弱性0件にした。
 
-### 改善後のローカル最終ビルド（モバイル・3回中央値）
+### 改善後の本番（モバイル・3回中央値）
 
 | 指標 | 改善前 | 改善後 | 差分 |
 |---|---:|---:|---:|
-| Lighthouse Performance | 58 | 85 | +27点 |
-| FCP | 1.101秒 | 0.760秒 | -31.0% |
-| LCP | 6.365秒 | 1.510秒 | -76.3% |
-| TBT | 0.826秒 | 0.603秒 | -27.0% |
+| Lighthouse Performance | 58 | 90 | +32点 |
+| FCP | 1.101秒 | 1.075秒 | -2.4% |
+| LCP | 6.365秒 | 1.571秒 | -75.3% |
+| TBT | 0.826秒 | 0.386秒 | -53.3% |
 | CLS | 0 | 0 | 維持 |
-| 転送量 | 1,226,904 bytes | 99,287 bytes | -91.9% |
+| 転送量 | 1,226,904 bytes | 99,347 bytes | -91.9% |
 | Accessibility | 96 | 100 | +4点 |
 | SEO | 中央値100 | 100 | 維持 |
 
-改善前は本番、改善後はローカル最終ビルドのため、サーバー応答差を含む。デプロイ後に本番を再測定して確定値を追記する。
+### 公開確認
+
+- 本番コミット: `28396cc76e772596c7721a15351f4dd904577118`
+- GitHub Pages: [Deploy to GitHub Pages #32479758896](https://github.com/Stayble-backoffice/stayble-kanri/actions/runs/32479758896) 成功
+- 本番10ページ、`robots.txt`、`sitemap.xml`、`llms.txt`、IndexNowキー、WebP画像がHTTP 200。
+- IndexNowへ10 URLを送信し、HTTP 202 Acceptedを確認。
 
 ## 8. エンティティ上の外部課題
 
