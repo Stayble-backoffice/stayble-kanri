@@ -50,7 +50,17 @@ const pins = [
 
   <div class="area-map" aria-label="北海道内の対応エリア分布イメージ">
     <div class="hokkaido-map">
-      <img src="/images/hokkaido-admin-map-transparent.png" alt="北海道の行政区分地図" loading="lazy" />
+      <picture>
+        <source srcset="/images/hokkaido-admin-map-transparent.webp" type="image/webp" />
+        <img
+          src="/images/hokkaido-admin-map-transparent.png"
+          alt="北海道の行政区分地図"
+          width="960"
+          height="720"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       {pins.map((pin) => (
         <span class:list={["hokkaido-pin", pin.className]}>
           <i aria-hidden="true"></i>

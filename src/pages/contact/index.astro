@@ -63,8 +63,8 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
   <section class="page-hero contact-intro">
     <div class="container page-hero-inner contact-hero-inner">
       <p class="eyebrow">CONTACT</p>
-      <h1>お問い合わせ</h1>
-      <p>乗り換え民泊管理について、物件情報が分かる範囲でご相談ください。</p>
+      <h1>今の管理費と清掃品質を、無料で比較相談。</h1>
+      <p>現在の管理費や売上、物件情報が分かる範囲で構いません。乗り換え後の費用と運用条件を整理します。</p>
     </div>
   </section>
 
@@ -75,7 +75,28 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
         <input type="hidden" name="subject" value="【乗り換え民泊管理】LPから新規問い合わせ" />
         <input type="hidden" name="from_name" value="Stayble 乗り換え民泊管理LP" />
         <input type="hidden" name="form_name" value="住宅宿泊管理 お問い合わせ" />
-        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="measurement_version" value="" />
+        <input type="hidden" name="first_touch_at" value="" />
+        <input type="hidden" name="first_landing_page" value="" />
+        <input type="hidden" name="first_landing_topic" value="" />
+        <input type="hidden" name="first_referrer" value="" />
+        <input type="hidden" name="traffic_source" value="" />
+        <input type="hidden" name="utm_source" value="" />
+        <input type="hidden" name="utm_medium" value="" />
+        <input type="hidden" name="utm_campaign" value="" />
+        <input type="hidden" name="utm_content" value="" />
+        <input type="hidden" name="utm_term" value="" />
+        <input type="hidden" name="gclid" value="" />
+        <input type="hidden" name="msclkid" value="" />
+        <input type="hidden" name="conversion_page" value="" />
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="botcheck"
+          tabindex="-1"
+          autocomplete="off"
+          aria-label="この項目は入力しないでください"
+        />
 
         <div class="form-grid">
           <div class="form-field">
@@ -162,7 +183,8 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
 
       <p class="contact-note">
         入力内容を確認のうえ、担当者より1〜3営業日以内にご連絡します。<br />
-        返信が届かない場合は迷惑メールフォルダもご確認ください。
+        返信が届かない場合は迷惑メールフォルダもご確認ください。<br />
+        改善効果の測定のため、フォーム送信時に初回流入元・参照ページ等もあわせて送信します。
       </p>
     </div>
   </section>
@@ -178,6 +200,41 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
       }
 
       const accessKeyInput = form.querySelector('input[name="access_key"]');
+      const storageKey = "stayble_minpaku_first_touch_v1";
+      const attributionFields = [
+        "measurement_version",
+        "first_touch_at",
+        "first_landing_page",
+        "first_landing_topic",
+        "first_referrer",
+        "traffic_source",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+        "gclid",
+        "msclkid"
+      ];
+
+      const setFieldValue = (name, value) => {
+        const input = form.querySelector(`input[name="${name}"]`);
+        if (input instanceof HTMLInputElement) {
+          input.value = String(value || "").slice(0, 200);
+        }
+      };
+
+      const populateAttribution = () => {
+        setFieldValue("conversion_page", `${location.origin}${location.pathname}`);
+        try {
+          const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
+          attributionFields.forEach((name) => setFieldValue(name, stored[name]));
+        } catch {
+          // Attribution is optional and must never block an inquiry.
+        }
+      };
+
+      populateAttribution();
 
       const setStatus = (type, message) => {
         status.className = `form-status ${type}`;
@@ -192,6 +249,8 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
         if (!form.reportValidity()) {
           return;
         }
+
+        populateAttribution();
 
         const confirmed = window.confirm("入力内容を確認しました。送信してよろしいですか？");
         if (!confirmed) {
@@ -218,6 +277,14 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
 
           if (!response.ok || !result.success) {
             throw new Error(result.message || "Web3Forms submission failed.");
+          }
+
+          if (Array.isArray(window.dataLayer)) {
+            window.dataLayer.push({
+              event: "contact_form_success",
+              form_name: "住宅宿泊管理 お問い合わせ",
+              traffic_source: form.elements.namedItem("traffic_source")?.value || ""
+            });
           }
 
           form.reset();

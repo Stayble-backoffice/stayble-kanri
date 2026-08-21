@@ -60,21 +60,9 @@ const areaFaqs = [
   }
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: areaFaqs.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer
-    }
-  }))
-};
 ---
 
-<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="対応エリア" schema={faqSchema}>
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="対応エリア">
   <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">SERVICE AREA</p>

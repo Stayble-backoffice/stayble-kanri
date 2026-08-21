@@ -3,24 +3,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import CTA from "../../components/CTA.astro";
 import FAQList from "../../components/FAQList.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
-import { faqs, pageMeta } from "../../data/site";
+import { pageMeta } from "../../data/site";
 
 const meta = pageMeta.faq;
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer
-    }
-  }))
-};
 ---
 
-<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="よくある質問" schema={faqSchema}>
+<BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="よくある質問">
   <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">FAQ</p>

@@ -2,7 +2,7 @@
   --navy-900: #071a33;
   --navy-800: #0b2a52;
   --navy-700: #103b70;
-  --teal-600: #0f8fa8;
+  --teal-600: #08758a;
   --teal-500: #19a9c8;
   --teal-100: #e6f7fb;
   --blue-50: #f3fafd;
@@ -39,7 +39,6 @@ body {
   font-weight: 500;
   line-height: 1.8;
   line-break: strict;
-  text-wrap: pretty;
   overflow-x: hidden;
 }
 
@@ -81,7 +80,7 @@ h3 {
   font-family: var(--font-serif);
   font-weight: 800;
   text-wrap: balance;
-  word-break: auto-phrase;
+  overflow-wrap: anywhere;
 }
 
 h1 {
@@ -259,6 +258,44 @@ h3 {
   font-size: 1.08rem;
 }
 
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  max-width: 640px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--teal-600);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 30px rgba(7, 26, 51, 0.07);
+}
+
+.hero-proof div {
+  display: grid;
+  gap: 1px;
+}
+
+.hero-proof strong {
+  color: var(--navy-800);
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.hero-proof span,
+.hero-proof p {
+  color: var(--gray-700);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.hero-proof p {
+  flex-basis: 100%;
+  margin: 0;
+}
+
 .hero-actions,
 .button-row {
   display: flex;
@@ -307,7 +344,13 @@ h3 {
   clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
 }
 
-.hero-visual > img {
+.hero-visual > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-visual > picture > img {
   width: 100%;
   height: 100%;
   min-height: 760px;
@@ -334,6 +377,22 @@ h3 {
 .section-heading-left {
   margin-left: 0;
   text-align: left;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--navy-800);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--teal-600);
+  text-underline-offset: 4px;
+}
+
+.notes-inline {
+  color: var(--gray-500);
+  font-size: 0.86rem;
 }
 
 .section-lead {
@@ -1563,7 +1622,7 @@ h3 {
   }
 
   .hero-visual,
-  .hero-visual > img {
+  .hero-visual > picture > img {
     min-height: 520px;
     height: 520px;
     max-height: none;
@@ -1664,7 +1723,7 @@ h3 {
   }
 
   .hero-visual,
-  .hero-visual > img {
+  .hero-visual > picture > img {
     min-height: 460px;
     height: 460px;
   }
@@ -1943,7 +2002,7 @@ h3 {
     height: 440px;
     background:
       linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.92) 48%, rgba(255, 255, 255, 0.2) 100%),
-      url("/images/hero-sapporo-room-wide.png") 72% center / cover no-repeat;
+      url("/images/hero-sapporo-room-wide.webp") 72% center / cover no-repeat;
     opacity: 0.82;
     pointer-events: none;
   }
@@ -2014,7 +2073,7 @@ h3 {
     box-shadow: 0 18px 42px rgba(7, 26, 51, 0.12);
   }
 
-  .hero-visual > img {
+  .hero-visual > picture > img {
     min-height: 224px;
     height: 224px;
     object-position: 56% center;
@@ -2250,7 +2309,7 @@ h3 {
     height: 194px;
   }
 
-  .hero-visual > img {
+  .hero-visual > picture > img {
     min-height: 194px;
     height: 194px;
   }

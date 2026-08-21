@@ -9,6 +9,20 @@ import { pageMeta } from "../../data/site";
 
 const meta = pageMeta.pricing;
 const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗品費（任意）", "ゴミ処理関連費", "駆け付け費", "その他実費"];
+const comparisonPoints = [
+  {
+    title: "売上歩合だけでなく、月額固定費も確認",
+    text: "同じ売上歩合でも、固定費や最低料金によって毎月の管理費は変わります。Staybleは物件規模別の固定費と売上歩合を分けて表示します。"
+  },
+  {
+    title: "管理費と清掃費を分けて比較",
+    text: "管理費が低く見えても、清掃費に調整コスト等が含まれる場合があります。見積もりは清掃・リネンサプライまで項目別に確認します。"
+  },
+  {
+    title: "含まれる業務と別途費用を確認",
+    text: "OTA運用、現地対応、消耗品、駆け付けなど、管理費に含む業務と別途発生する費用を契約前に整理します。"
+  }
+];
 ---
 
 <BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="料金">
@@ -34,6 +48,25 @@ const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗
   </section>
 
   <section class="section section-muted">
+    <div class="container">
+      <SectionHeading
+        label="HOW TO COMPARE"
+        title="民泊管理会社の料金比較で確認する3点"
+        lead="表示された歩合率だけでは、実際の控除額は判断できません。管理費・現場費用・業務範囲を同じ条件で比べることが重要です。"
+      />
+      <div class="grid-3">
+        {comparisonPoints.map((item, index) => (
+          <article class="card">
+            <span class="number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container split desktop-service-split">
       <div>
         <p class="section-label">COST STRUCTURE</p>
@@ -50,7 +83,7 @@ const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗
     </div>
   </section>
 
-  <section class="section" id="cost">
+  <section class="section section-muted" id="cost">
     <div class="container">
       <SectionHeading
         label="REFERENCE"
@@ -61,7 +94,7 @@ const costItems = ["管理費", "清掃費", "リネンサプライ費", "消耗
     </div>
   </section>
 
-  <section class="section section-muted" id="simulation">
+  <section class="section" id="simulation">
     <div class="container">
       <SectionHeading
         label="SIMULATION"

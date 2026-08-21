@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import AttributionTracker from "../components/AttributionTracker.astro";
 import { LAST_UPDATED, SITE_URL, areas, siteMeta } from "../data/site";
 import "../styles/global.css";
 
@@ -10,9 +11,10 @@ interface Props {
   path: string;
   pageName?: string;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  preloadImage?: string;
 }
 
-const { title, description, path, pageName, schema } = Astro.props;
+const { title, description, path, pageName, schema, preloadImage } = Astro.props;
 const canonical = new URL(path, SITE_URL).toString();
 const schemas = [
   {
@@ -22,7 +24,7 @@ const schemas = [
     name: "株式会社Stayble",
     legalName: "株式会社Stayble",
     url: SITE_URL,
-    logo: `${SITE_URL}images/stayble-logo-cropped.png`,
+    logo: `${SITE_URL}images/stayble-logo-cropped.webp`,
     image: siteMeta.ogImage,
     identifier: {
       "@type": "PropertyValue",
@@ -38,7 +40,7 @@ const schemas = [
       addressCountry: "JP"
     },
     areaServed: areas,
-    sameAs: ["https://www.ww-sapporo-minpaku.com", "https://www.stayble.jp"]
+    sameAs: ["https://windwoods-stayble.com/", "https://www.stayble.jp/"]
   },
   {
     "@context": "https://schema.org",
@@ -46,6 +48,7 @@ const schemas = [
     "@id": `${SITE_URL}#website`,
     url: SITE_URL,
     name: siteMeta.name,
+    alternateName: ["Stayble 民泊管理", "乗り換え民泊管理"],
     inLanguage: "ja-JP",
     publisher: {
       "@id": `${SITE_URL}#organization`
@@ -129,9 +132,9 @@ const schemas = [
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM向けサイト概要" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />}
     <meta name="theme-color" content="#0b2a52" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -156,5 +159,6 @@ const schemas = [
       <slot />
     </main>
     <Footer />
+    <AttributionTracker />
   </body>
 </html>

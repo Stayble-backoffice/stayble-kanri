@@ -127,6 +127,7 @@ Astroの場合:
 ```bash
 npm create astro@latest .
 npm install
+npm run images:generate
 npm run dev
 ```
 
@@ -134,7 +135,10 @@ npm run dev
 
 ```bash
 npm run build
+npm run seo:audit
 ```
+
+`npm run seo:audit` は、ビルド後の `dist/` に対して10ページのtitle、meta、canonical、H1、JSON-LD、内部参照、重要公開ファイルを検査します。
 
 プレビュー:
 
@@ -230,13 +234,15 @@ GitHub ActionsでビルドしてPagesへデプロイする。
 
 ## 10. SEO・LLMO運用
 
-最新の監査結果と次回の測定項目は、以下を参照してください。
+最新の監査結果、実装内容、次回の測定項目は、以下を参照してください。
 
 ```txt
-SEO_LLMO_AUDIT_2026-08-02.md
+SEO_LLMO_AUDIT_2026-08-21.md
 ```
 
-改善版の測定開始日は2026年8月2日、次回比較予定日は2026年9月2日です。Search Consoleの直近28日と前の28日、インデックス状況、問い合わせ数、同一質問によるAI回答を比較します。
+今回の改善版の測定開始日は2026年8月21日、次回比較予定日は2026年9月30日です。Search Consoleの直近28日と前の28日、生成AIパフォーマンス、検索結果、問い合わせ数・流入元、同一質問によるAI回答を比較します。
+
+前回記録は `SEO_LLMO_AUDIT_2026-08-02.md` に残しています。
 
 ---
 

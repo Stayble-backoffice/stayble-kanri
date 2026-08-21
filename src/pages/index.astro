@@ -58,18 +58,28 @@ const services = [
 ];
 ---
 
-<BaseLayout title={meta.title} description={meta.description} path={meta.path}>
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  path={meta.path}
+  preloadImage="/images/hero-sapporo-room-wide.webp"
+>
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">STAYBLE SWITCHING MANAGEMENT</p>
-        <h1>今の管理会社、<br />高すぎませんか？<br />清掃会社が管理を<br />請け負う時代へ。</h1>
+        <p class="eyebrow">開業済み民泊オーナー向け｜管理会社の乗り換え</p>
+        <h1>札幌で民泊管理会社を<br />乗り換えるなら。<br />管理費と清掃品質を、<br />同時に見直す。</h1>
         <p class="hero-copy">
-          開業済み民泊のための、乗り換え民泊管理。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・現地対応まで、Staybleがまとめて支えます。
+          管理費は月額5,000円〜 + 売上5%。清掃会社のStaybleが、清掃・リネンサプライ・OTA運用・現地対応まで一体で組み直す「乗り換え民泊管理」です。
         </p>
+        <div class="hero-proof" aria-label="清掃管理事業の実績">
+          <div><strong>約240室</strong><span>民泊清掃管理</span></div>
+          <div><strong>約15,000件</strong><span>年間清掃件数</span></div>
+          <p>※いずれも清掃管理事業の実績です。</p>
+        </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/contact/">無料相談する</a>
-          <a class="btn btn-secondary" href="/pricing/">料金シミュレーションを見る</a>
+          <a class="btn btn-primary" href="/contact/">今の管理費と比較する</a>
+          <a class="btn btn-secondary" href="/pricing/">料金・比較例を見る</a>
         </div>
         <ul class="hero-badges">
           <li>管理費 月額5,000円〜 + 売上5%</li>

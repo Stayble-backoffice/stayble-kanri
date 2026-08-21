@@ -1,0 +1,69 @@
+<script is:inline>
+  (() => {
+    const storageKey = "stayble_minpaku_first_touch_v1";
+
+    const trim = (value, length = 180) => String(value || "").slice(0, length);
+    const landingTopic = (pathname) => {
+      const firstSegment = pathname.split("/").filter(Boolean)[0];
+      return firstSegment || "home";
+    };
+
+    const sanitizeReferrer = () => {
+      if (!document.referrer) return "";
+      try {
+        const url = new URL(document.referrer);
+        return `${url.origin}${url.pathname}`;
+      } catch {
+        return "";
+      }
+    };
+
+    const classifySource = (params, referrer) => {
+      const utmSource = params.get("utm_source");
+      const utmMedium = params.get("utm_medium");
+      if (utmSource || utmMedium) return "utm";
+      if (params.get("gclid") || params.get("msclkid")) return "paid_search";
+      if (!referrer) return "direct";
+
+      let host = "";
+      try {
+        host = new URL(referrer).hostname.toLowerCase();
+      } catch {
+        return "referral";
+      }
+
+      if (/(^|\.)google\./.test(host)) return "google_organic";
+      if (/(^|\.)bing\.com$/.test(host)) return "bing_organic";
+      if (/(^|\.)search\.yahoo\./.test(host)) return "yahoo_organic";
+      if (/(chatgpt\.com|perplexity\.ai|claude\.ai|copilot\.microsoft\.com|gemini\.google\.com)$/.test(host)) return "ai_referral";
+      if (host === location.hostname) return "internal";
+      return "referral";
+    };
+
+    try {
+      if (localStorage.getItem(storageKey)) return;
+
+      const params = new URLSearchParams(location.search);
+      const referrer = sanitizeReferrer();
+      const payload = {
+        measurement_version: "2026-08-21",
+        first_touch_at: new Date().toISOString(),
+        first_landing_page: trim(`${location.origin}${location.pathname}`),
+        first_landing_topic: trim(landingTopic(location.pathname), 40),
+        first_referrer: trim(referrer),
+        traffic_source: classifySource(params, referrer),
+        utm_source: trim(params.get("utm_source"), 100),
+        utm_medium: trim(params.get("utm_medium"), 100),
+        utm_campaign: trim(params.get("utm_campaign"), 120),
+        utm_content: trim(params.get("utm_content"), 120),
+        utm_term: trim(params.get("utm_term"), 120),
+        gclid: trim(params.get("gclid"), 180),
+        msclkid: trim(params.get("msclkid"), 180)
+      };
+
+      localStorage.setItem(storageKey, JSON.stringify(payload));
+    } catch {
+      // Storage unavailable: the form remains fully usable without attribution data.
+    }
+  })();
+</script>

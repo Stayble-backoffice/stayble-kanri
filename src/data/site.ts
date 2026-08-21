@@ -1,14 +1,14 @@
 ﻿export const SITE_URL = "https://minpaku.stayble.jp/";
 
-export const LAST_UPDATED = "2026-08-02";
+export const LAST_UPDATED = "2026-08-21";
 
 export const siteMeta = {
   name: "Stayble 乗り換え民泊管理",
   company: "株式会社Stayble",
   service: "乗り換え民泊管理",
   description:
-    "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・Airbnb運用代行・現地対応まで、清掃会社のStaybleがまとめて支えます。",
-  ogImage: `${SITE_URL}ogp.png`,
+    "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。今の管理費と清掃品質を、清掃会社のStaybleが一体で見直します。",
+  ogImage: `${SITE_URL}ogp.jpg`,
   ogImageAlt: "今の管理会社、高すぎませんか？清掃会社が管理を請け負う時代へ。Stayble 乗り換え民泊管理"
 };
 
@@ -24,19 +24,19 @@ export const navItems = [
 export const pageMeta = {
   home: {
     path: "/",
-    title: "札幌の民泊管理会社乗り換え｜管理費が高いなら Stayble",
+    title: "札幌で民泊管理会社を乗り換えるなら｜月額5,000円〜 + 売上5% Stayble",
     description:
-      "札幌市中心の開業済み民泊向け「乗り換え民泊管理」。管理費は月額5,000円〜 + 売上5%。清掃・リネンサプライ・OTA運用・Airbnb運用代行・現地対応まで、清掃会社のStaybleがまとめて支えます。小樽・千歳・恵庭・北広島・江別も対応。"
+      "札幌で民泊管理会社の乗り換えを検討中の開業済みオーナーへ。管理費は月額5,000円〜 + 売上5%。清掃管理約240室・年間清掃約15,000件の現場基盤で、清掃品質と管理費を一体で見直します。"
   },
   pricing: {
     path: "/pricing/",
-    title: "札幌の民泊管理費・料金｜手残り比較シミュレーション Stayble",
+    title: "札幌の民泊管理費を比較｜月額5,000円〜 + 売上5% Stayble",
     description:
       "Staybleの乗り換え民泊管理は、管理費が月額5,000円〜 + 売上5%。清掃費・リネンサプライ費などの費用構造と、既存管理会社から乗り換えた場合の管理控除後シミュレーションを紹介します。"
   },
   switching: {
     path: "/switching/",
-    title: "民泊管理会社の乗り換え手順｜札幌の開業済み物件向け Stayble",
+    title: "札幌で民泊管理会社を乗り換える手順｜開業済み物件向け Stayble",
     description:
       "既存管理会社の管理費や清掃品質に不満がある札幌の民泊オーナーへ。Staybleは初期費用0円、写真撮影0円、OTA初期立ち上げ0円で、開業済み物件の乗り換え管理を支援します。"
   },
@@ -72,7 +72,7 @@ export const pageMeta = {
   },
   contact: {
     path: "/contact/",
-    title: "お問い合わせ｜札幌の乗り換え民泊管理 Stayble",
+    title: "無料の乗り換え相談｜札幌の民泊管理会社 Stayble",
     description:
       "札幌市中心の開業済み民泊向けに、乗り換え民泊管理の相談を受け付けています。物件所在地、売上平均、清掃・リネンサプライ・現地対応の課題が分かる範囲でご相談ください。"
   },

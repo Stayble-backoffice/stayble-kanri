@@ -7,13 +7,13 @@ const mobileNavItems = [...navItems, { label: "お問い合わせ", href: "/cont
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="/" aria-label="Stayble 乗り換え民泊管理 トップ">
-      <img src="/images/stayble-logo-cropped.png" alt="Stayble" width="220" height="94" />
+      <img src="/images/stayble-logo-cropped.webp" alt="Stayble" width="220" height="93" decoding="async" />
       <span>乗り換え民泊管理</span>
     </a>
     <nav class="site-nav" aria-label="主要ナビゲーション">
       {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="btn btn-primary header-cta" href="/contact/">無料相談する</a>
+    <a class="btn btn-primary header-cta" href="/contact/">管理費を比較する</a>
     <button class="mobile-menu-toggle" type="button" aria-label="メニューを開く" aria-controls="mobile-nav" aria-expanded="false">
       <span></span>
       <span></span>
@@ -24,7 +24,7 @@ const mobileNavItems = [...navItems, { label: "お問い合わせ", href: "/cont
     <div class="mobile-drawer-grid">
       {mobileNavItems.map((item) => <a href={item.href}>{item.label}</a>)}
     </div>
-    <a class="mobile-drawer-cta" href="/contact/">無料相談する</a>
+    <a class="mobile-drawer-cta" href="/contact/">管理費を比較する</a>
   </nav>
 </header>
 
