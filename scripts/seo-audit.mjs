@@ -6,7 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const siteUrl = "https://minpaku.stayble.jp";
 const lastUpdated = "2026-09-01";
-const expectedTitle = "札幌で民泊管理会社を乗り換えるなら｜月額5,000円〜＋売上5%｜国交大臣登録 Stayble";
+const expectedHomeTitle = "札幌で民泊管理会社を乗り換えるなら｜月額5,000円〜＋売上5%｜国交大臣登録 Stayble";
 const routes = ["/", "/pricing/", "/switching/", "/services/", "/cleaning-linen/", "/emergency/", "/area/", "/faq/", "/company/", "/contact/"];
 const errors = [];
 
@@ -29,10 +29,17 @@ for (const route of routes) {
 
   const html = fs.readFileSync(file, "utf8");
   const expectedCanonical = `${siteUrl}${route}`;
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() ?? "";
+  const ogTitle = html.match(/<meta\s+property="og:title"\s+content="([^"]*)"/i)?.[1]?.trim() ?? "";
   if (count(html, /<h1(?:\s|>)/gi) !== 1) addError(route, "h1が1件ではありません");
   if (count(html, /<title(?:\s|>)/gi) !== 1) addError(route, "titleが1件ではありません");
-  if (!html.includes(`<title>${expectedTitle}</title>`)) addError(route, "titleが共通指定値ではありません");
-  if (!html.includes(`<meta property="og:title" content="${expectedTitle}">`)) addError(route, "og:titleが共通指定値ではありません");
+  if (route === "/") {
+    if (title !== expectedHomeTitle) addError(route, "titleがトップページ指定値ではありません");
+    if (ogTitle !== expectedHomeTitle) addError(route, "og:titleがトップページ指定値ではありません");
+  } else {
+    if (!title) addError(route, "ページ固有titleが空です");
+    if (!ogTitle) addError(route, "ページ固有og:titleが空です");
+  }
   if (count(html, /<meta\s+name="description"/gi) !== 1) addError(route, "meta descriptionが1件ではありません");
   if (!html.includes(`<link rel="canonical" href="${expectedCanonical}">`)) addError(route, "canonicalが不正です");
   if (!html.includes(`"dateModified":"${lastUpdated}"`)) addError(route, "dateModifiedが最新日ではありません");
