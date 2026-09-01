@@ -2059,7 +2059,7 @@ h3 {
     font-size: 0.8rem;
   }
 
-  .hero-badges li:nth-child(n + 6) {
+  .hero-badges li:nth-child(n + 7) {
     display: none;
   }
 
@@ -2824,11 +2824,11 @@ h3 {
   }
 
   .hero-badges li:first-child,
-  .hero-badges li:nth-child(5) {
+  .hero-badges li:nth-child(6) {
     grid-column: 1 / -1;
   }
 
-  .hero-badges li:nth-child(n + 6) {
+  .hero-badges li:nth-child(n + 7) {
     display: none;
   }
 
