@@ -26,7 +26,7 @@ Codexは、会社情報・実績・対応エリア・既存清掃事業の情報
 | 資本金 | 1円 |
 | 本社所在地 | 札幌市中央区南5条西15丁目2-3 リズム医大前503（2026年9月30日時点の公的登録簿） |
 | 事業内容 | 民泊・バケーションレンタルの清掃管理事業 / 清掃管理システム「Stayble」の運営 |
-| 清掃事業サイト | https://www.ww-sapporo-minpaku.com |
+| 清掃事業サイト | https://windwoods-stayble.com/ |
 | システムサイト | https://www.stayble.jp |
 | 住宅宿泊管理LP予定URL | https://minpaku.stayble.jp/ |
 

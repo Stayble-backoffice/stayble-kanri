@@ -242,7 +242,7 @@ OGP画像は未確定。公開前に作成。
   "name": "株式会社Stayble",
   "url": "https://minpaku.stayble.jp/",
   "sameAs": [
-    "https://www.ww-sapporo-minpaku.com",
+    "https://windwoods-stayble.com/",
     "https://www.stayble.jp"
   ]
 }

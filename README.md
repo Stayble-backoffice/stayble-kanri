@@ -38,7 +38,7 @@ https://minpaku.stayble.jp/
 関連サイト:
 
 ```txt
-清掃事業サイト: https://www.ww-sapporo-minpaku.com
+清掃事業サイト: https://windwoods-stayble.com/
 システムサイト: https://www.stayble.jp
 ```
 
@@ -238,7 +238,9 @@ GitHub ActionsでビルドしてPagesへデプロイする。
 SEO_LLMO_AUDIT_2026-08-21.md
 ```
 
-今回の改善版の測定開始日は2026年8月21日、次回比較予定日は2026年9月30日です。Search Consoleの直近28日と前の28日、生成AIパフォーマンス、検索結果、問い合わせ数・流入元、同一質問によるAI回答を比較します。
+2026年10月6日の実測・改善内容は `docs/growth-operations-2026-10-06.md` を参照。
+
+前回の測定開始日は2026年8月21日です。2026年10月6日公開の改善版は、約30日後にSearch Consoleの非指名検索・ページ別表示、フォーム通知の件数と商談適合度、同一質問によるAI回答を比較します。GA4のセッションCVRは管理サイト用のウェブ測定タグ設置後に測定します。
 
 前回記録は `SEO_LLMO_AUDIT_2026-08-02.md` に残しています。
 
