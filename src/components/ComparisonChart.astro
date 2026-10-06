@@ -1,91 +1,106 @@
-﻿---
-import { simulationNotes } from "../data/site";
-
-interface Props {
-  compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
-
-const comparisonItems = [
-  {
-    label: "一般的な管理会社の例",
-    modifier: "",
-    owner: "180,000円",
-    ownerHeight: "60%",
-    cleaningLabel: "清掃費",
-    cleaning: "60,000円",
-    cleaningHeight: "20%",
-    managementLabel: "管理費 20%",
-    management: "60,000円",
-    managementHeight: "20%",
-    note: "清掃費12,000円/回に、管理会社側の調整コストや上乗せが含まれる想定例です。"
-  },
-  {
-    label: "Staybleの乗り換え民泊管理",
-    modifier: "stayble-card",
-    owner: "227,000円",
-    ownerHeight: "75.67%",
-    cleaningLabel: "清掃費",
-    cleaning: "50,000円",
-    cleaningHeight: "16.67%",
-    managementLabel: "管理費",
-    management: "23,000円",
-    managementHeight: "7.66%",
-    note: "清掃費10,000円/回で、清掃会社の直接運用として計算しています。管理費は月額8,000円 + 売上5%の想定です。"
-  }
-];
-
-const assumptions = [
-  "規模B / 2LDK想定",
-  "月間売上300,000円",
-  "15泊/月・チェックアウト5回",
-  "一般管理会社の清掃費: 12,000円/回（管理会社マージン込み）",
-  "Staybleの清掃費: 10,000円/回（清掃会社の直接運用）"
-];
+---
+import { requiredPriceNotes } from "../data/site";
 ---
 
-<div class:list={["comparison-wrap", compact && "comparison-compact"]}>
-  <div class="desktop-comparison-content">
-    <div class="comparison-summary">
-      <p class="section-label">SIMULATION</p>
-      <h3>月間売上300,000円・規模Bの場合</h3>
-      <p>
-        規模B相当の物件で、管理費と清掃費を控除した後に残る金額を比較します。オーナー側の借上賃料、消耗品費、税金、ローン等は含めていません。
-      </p>
-      <div class="comparison-highlight">
-        <span>この条件例の差額</span>
-        <strong>月47,000円</strong>
+<div class="fee-calculator" id="fee-calculator">
+  <div class="fee-calculator-intro">
+    <p class="section-label">MANAGEMENT FEE CALCULATOR</p>
+    <h3>今の管理費と、同じ月間売上で比較</h3>
+    <p>入力した条件で管理費だけを比べます。清掃費・リネンサプライ費などは物件ごとの見積もりで確認します。</p>
+  </div>
+
+  <div class="fee-calculator-grid">
+    <div class="fee-calculator-fields">
+      <div class="form-field">
+        <label for="calc-sales">月間の宿泊売上（目安）</label>
+        <div class="input-with-unit">
+          <input id="calc-sales" type="number" min="0" step="1" inputmode="decimal" placeholder="例：30" />
+          <span>万円</span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="calc-plan">物件規模</label>
+        <select id="calc-plan">
+          <option value="5000">規模A：1R〜1LDK／約30〜45㎡</option>
+          <option value="8000">規模B：2LDK／約40〜60㎡</option>
+          <option value="15000">規模C：3LDK以上／60㎡以上</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="calc-current-fee">現在の月間管理費（分かる場合）</label>
+        <div class="input-with-unit">
+          <input id="calc-current-fee" type="number" min="0" step="1" inputmode="numeric" placeholder="例：60000" />
+          <span>円</span>
+        </div>
+        <small>固定費と歩合を合わせた月額を入力。清掃費は含めないでください。</small>
       </div>
     </div>
-    <div class="assumption-strip" aria-label="シミュレーション前提">
-      {assumptions.map((item) => <span>{item}</span>)}
+    <div class="fee-calculator-result" aria-live="polite" aria-atomic="true">
+      <p>Staybleの管理費（月額固定費 + 売上5%）</p>
+      <strong id="calc-stayble-fee">売上を入力してください</strong>
+      <p class="fee-calculator-breakdown" id="calc-breakdown"></p>
+      <div class="fee-calculator-difference" id="calc-difference" hidden>
+        <span>現在の管理費との差</span>
+        <strong id="calc-difference-value"></strong>
+        <small id="calc-difference-note"></small>
+      </div>
+      <a class="btn btn-primary" id="calc-contact-link" href="/contact/">物件条件を無料で相談する</a>
     </div>
-    <div class="comparison-bars" aria-label="管理控除後シミュレーションの積み上げ比較">
-      {comparisonItems.map((item) => (
-        <article class:list={["comparison-card", item.modifier]}>
-          <h4>{item.label}</h4>
-          <div class="stack-bar">
-            <div class="bar-segment owner" style={`height: ${item.ownerHeight}`}>
-              <span><em>管理控除後の手残り</em><strong>{item.owner}</strong></span>
-            </div>
-            <div class="bar-segment cleaning" style={`height: ${item.cleaningHeight}`}>
-              <span><em>{item.cleaningLabel}</em><strong>{item.cleaning}</strong></span>
-            </div>
-            <div class="bar-segment management" style={`height: ${item.managementHeight}`}>
-              <span><em>{item.managementLabel}</em><strong>{item.management}</strong></span>
-            </div>
-          </div>
-          <p class="bar-note">{item.note}</p>
-        </article>
-      ))}
-    </div>
-    <div class="comparison-callouts">
-      <p><strong>清掃費マージンの見え方</strong> 管理会社が清掃を外注する構造では、清掃会社の原価に管理会社側の調整コストが乗る場合があります。</p>
-      <p><strong>Staybleの見え方</strong> 清掃会社が管理を請け負うため、清掃・リネンサプライ・報告導線を一体で設計できます。</p>
-    </div>
-    <ul class="notes">
-      {simulationNotes.map((note) => <li>{note}</li>)}
-    </ul>
   </div>
+  <ul class="notes">
+    {requiredPriceNotes.map((note) => <li>{note}</li>)}
+    <li>※比較は管理費のみの概算です。売上・稼働率・最終的な手取り額を保証しません。戸建て・大型物件などは個別見積もりとなる場合があります。</li>
+  </ul>
 </div>
+
+<script is:inline>
+  (() => {
+    const root = document.getElementById("fee-calculator");
+    if (!root) return;
+    const sales = root.querySelector("#calc-sales");
+    const plan = root.querySelector("#calc-plan");
+    const current = root.querySelector("#calc-current-fee");
+    const feeOutput = root.querySelector("#calc-stayble-fee");
+    const breakdown = root.querySelector("#calc-breakdown");
+    const difference = root.querySelector("#calc-difference");
+    const differenceValue = root.querySelector("#calc-difference-value");
+    const differenceNote = root.querySelector("#calc-difference-note");
+    const contactLink = root.querySelector("#calc-contact-link");
+    if (!(sales instanceof HTMLInputElement) || !(plan instanceof HTMLSelectElement) || !(current instanceof HTMLInputElement)) return;
+    const yen = (value) => `${Math.round(value).toLocaleString("ja-JP")}円`;
+
+    const update = () => {
+      const hasSales = sales.value.trim() !== "";
+      const salesYen = Number(sales.value) * 10000;
+      const fixed = Number(plan.value);
+      const valid = hasSales && Number.isFinite(salesYen) && salesYen >= 0 && salesYen <= 100000000;
+      if (!valid) {
+        feeOutput.textContent = "売上を入力してください";
+        breakdown.textContent = "";
+        difference.hidden = true;
+        contactLink.href = "/contact/";
+        return;
+      }
+      const commission = Math.round(salesYen * 0.05);
+      const staybleFee = fixed + commission;
+      feeOutput.textContent = yen(staybleFee);
+      breakdown.textContent = `月額固定費 ${yen(fixed)} + 売上歩合 ${yen(commission)}`;
+      const hasCurrent = current.value.trim() !== "";
+      const currentFee = Number(current.value);
+      if (hasCurrent && Number.isFinite(currentFee) && currentFee >= 0 && currentFee <= 100000000) {
+        const delta = currentFee - staybleFee;
+        difference.hidden = false;
+        differenceValue.textContent = delta === 0 ? "同額" : yen(Math.abs(delta));
+        differenceNote.textContent = delta > 0 ? "Staybleの管理費が低い概算" : delta < 0 ? "現在の管理費が低い概算" : "管理費の概算は同額です";
+      } else {
+        difference.hidden = true;
+      }
+      const params = new URLSearchParams({ monthly_sales: sales.value, plan: plan.options[plan.selectedIndex].text });
+      if (hasCurrent && Number.isFinite(currentFee) && currentFee >= 0) params.set("current_fee", current.value);
+      contactLink.href = `/contact/?${params.toString()}`;
+    };
+    [sales, current].forEach((input) => input.addEventListener("input", update));
+    plan.addEventListener("change", update);
+    update();
+  })();
+</script>

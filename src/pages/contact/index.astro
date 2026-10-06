@@ -4,72 +4,23 @@ import { pageMeta } from "../../data/site";
 
 const meta = pageMeta.contact;
 const web3formsAccessKey = "b40b2a03-d391-446f-a7d2-fdcfbfef3c3e";
-
-const prefectures = [
-  "北海道",
-  "青森県",
-  "岩手県",
-  "宮城県",
-  "秋田県",
-  "山形県",
-  "福島県",
-  "茨城県",
-  "栃木県",
-  "群馬県",
-  "埼玉県",
-  "千葉県",
-  "東京都",
-  "神奈川県",
-  "新潟県",
-  "富山県",
-  "石川県",
-  "福井県",
-  "山梨県",
-  "長野県",
-  "岐阜県",
-  "静岡県",
-  "愛知県",
-  "三重県",
-  "滋賀県",
-  "京都府",
-  "大阪府",
-  "兵庫県",
-  "奈良県",
-  "和歌山県",
-  "鳥取県",
-  "島根県",
-  "岡山県",
-  "広島県",
-  "山口県",
-  "徳島県",
-  "香川県",
-  "愛媛県",
-  "高知県",
-  "福岡県",
-  "佐賀県",
-  "長崎県",
-  "熊本県",
-  "大分県",
-  "宮崎県",
-  "鹿児島県",
-  "沖縄県"
-];
-
-const propertyTypes = ["1R", "1LDK", "2LDK", "3LDK", "戸建て"];
-const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜70㎡", "70〜80㎡", "80〜90㎡", "90〜100㎡", "100㎡〜"];
 ---
 
 <BaseLayout title={meta.title} description={meta.description} path={meta.path} pageName="お問い合わせ">
   <section class="page-hero contact-intro">
     <div class="container page-hero-inner contact-hero-inner">
       <p class="eyebrow">CONTACT</p>
-      <h1>今の管理費と清掃品質を、無料で比較相談。</h1>
-      <p>現在の管理費や売上、物件情報が分かる範囲で構いません。乗り換え後の費用と運用条件を整理します。</p>
+      <h1>民泊管理会社の乗り換えを、まず相談。</h1>
+      <p>今の管理費、清掃品質、OTAの切り替えなど、気になる点を分かる範囲でお知らせください。詳しい住所や売上資料は、最初の相談には不要です。</p>
     </div>
   </section>
 
   <section class="section contact-form-section">
     <div class="container contact-form-wrap">
+      <div class="contact-assurance">
+        <strong>入力は約1分</strong>
+        <span>必須はお名前・メールアドレス・現在の運用状況だけです。</span>
+      </div>
       <form class="form-panel contact-form-panel" id="contact-form" action="https://api.web3forms.com/submit" method="POST" aria-label="お問い合わせフォーム">
         <input type="hidden" name="access_key" value={web3formsAccessKey} />
         <input type="hidden" name="subject" value="【乗り換え民泊管理】LPから新規問い合わせ" />
@@ -89,103 +40,64 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
         <input type="hidden" name="gclid" value="" />
         <input type="hidden" name="msclkid" value="" />
         <input type="hidden" name="conversion_page" value="" />
-        <input
-          type="checkbox"
-          name="botcheck"
-          class="botcheck"
-          tabindex="-1"
-          autocomplete="off"
-          aria-label="この項目は入力しないでください"
-        />
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-label="この項目は入力しないでください" />
 
         <div class="form-grid">
           <div class="form-field">
             <label for="name">お名前 <span class="required-badge">必須</span></label>
             <input id="name" name="name" type="text" autocomplete="name" required />
           </div>
-
-          <div class="form-field">
-            <label for="company">会社名（または屋号）</label>
-            <input id="company" name="company" type="text" autocomplete="organization" />
-          </div>
-
           <div class="form-field">
             <label for="email">メールアドレス <span class="required-badge">必須</span></label>
             <input id="email" name="email" type="email" autocomplete="email" required />
           </div>
-
           <div class="form-field">
-            <label for="phone">電話番号 <span class="required-badge">必須</span></label>
-            <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10,11}" placeholder="09012345678" autocomplete="tel" required />
-          </div>
-
-          <div class="form-field">
-            <label for="prefecture">都道府県 <span class="required-badge">必須</span></label>
-            <select id="prefecture" name="prefecture" required>
+            <label for="operation_status">現在の運用状況 <span class="required-badge">必須</span></label>
+            <select id="operation_status" name="operation_status" required>
               <option value="" selected disabled>選択してください</option>
-              {prefectures.map((prefecture) => <option value={prefecture}>{prefecture}</option>)}
+              <option value="開業済み・管理会社を利用中">開業済み・管理会社を利用中</option>
+              <option value="開業済み・自主管理中">開業済み・自主管理中</option>
+              <option value="開業準備中">開業準備中</option>
             </select>
           </div>
-
           <div class="form-field">
-            <label for="property_address_detail">物件所在地の続き <span class="required-badge">必須</span></label>
-            <input
-              id="property_address_detail"
-              name="property_address_detail"
-              type="text"
-              minlength="5"
-              placeholder="札幌市中央区南5条西15丁目2-3-503"
-              autocomplete="street-address"
-              required
-            />
+            <label for="city">物件の市区町村（任意）</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="例：札幌市中央区" />
           </div>
-
           <div class="form-field">
-            <label for="monthly_sales_average">現在の売上平均 <span class="required-badge">必須</span></label>
+            <label for="phone">電話番号（任意）</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="電話での連絡を希望する場合" />
+          </div>
+          <div class="form-field">
+            <label for="company">会社名・屋号（任意）</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="form-field">
+            <label for="monthly_sales_average">月間宿泊売上の目安（任意）</label>
             <div class="input-with-unit">
-              <input id="monthly_sales_average" name="monthly_sales_average" type="number" inputmode="numeric" min="0" step="1" placeholder="30" required />
+              <input id="monthly_sales_average" name="monthly_sales_average" type="number" min="0" step="1" inputmode="decimal" placeholder="例：30" />
               <span>万円</span>
             </div>
           </div>
-
           <div class="form-field">
-            <label for="property_type">物件タイプ <span class="required-badge">必須</span></label>
-            <select id="property_type" name="property_type" required>
-              <option value="" selected disabled>選択してください</option>
-              {propertyTypes.map((type) => <option value={type}>{type}</option>)}
-            </select>
+            <label for="current_management_fee">現在の月間管理費（任意）</label>
+            <div class="input-with-unit">
+              <input id="current_management_fee" name="current_management_fee" type="number" min="0" step="1" inputmode="numeric" placeholder="例：60000" />
+              <span>円</span>
+            </div>
           </div>
-
-          <div class="form-field">
-            <label for="area_size">㎡数 <span class="required-badge">必須</span></label>
-            <select id="area_size" name="area_size" required>
-              <option value="" selected disabled>選択してください</option>
-              {areaSizes.map((size) => <option value={size}>{size}</option>)}
-            </select>
-          </div>
-
           <div class="form-field full">
-            <label for="message">お問い合わせ詳細</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="現在の管理費、清掃品質、リネンサプライ、現地対応などで困っていることをご記入ください。"
-            ></textarea>
+            <label for="message">相談したいこと（任意）</label>
+            <textarea id="message" name="message" placeholder="例：管理費が高い、清掃品質が不安、既存予約がある状態での切り替えを相談したい"></textarea>
           </div>
         </div>
 
         <div class="form-actions">
-          <button class="btn btn-primary" type="submit" id="contact-submit">送信内容を確認する</button>
+          <button class="btn btn-primary" type="submit" id="contact-submit">無料相談を送信する</button>
         </div>
-
         <div class="form-status" id="contact-status" role="status" aria-live="polite" hidden></div>
       </form>
-
-      <p class="contact-note">
-        入力内容を確認のうえ、担当者より1〜3営業日以内にご連絡します。<br />
-        返信が届かない場合は迷惑メールフォルダもご確認ください。<br />
-        改善効果の測定のため、フォーム送信時に初回流入元・参照ページ等もあわせて送信します。
-      </p>
+      <p class="contact-note">入力内容は、ご相談への回答と見積もり案内のために使用します。初回の流入元情報は送信時に限り添付されます。</p>
     </div>
   </section>
 
@@ -194,109 +106,68 @@ const areaSizes = ["〜30㎡", "30〜40㎡", "40〜50㎡", "50〜60㎡", "60〜7
       const form = document.getElementById("contact-form");
       const submitButton = document.getElementById("contact-submit");
       const status = document.getElementById("contact-status");
+      if (!(form instanceof HTMLFormElement) || !(submitButton instanceof HTMLButtonElement) || !status) return;
 
-      if (!(form instanceof HTMLFormElement) || !(submitButton instanceof HTMLButtonElement) || !status) {
-        return;
-      }
-
-      const accessKeyInput = form.querySelector('input[name="access_key"]');
       const storageKey = "stayble_minpaku_first_touch_v1";
-      const attributionFields = [
-        "measurement_version",
-        "first_touch_at",
-        "first_landing_page",
-        "first_landing_topic",
-        "first_referrer",
-        "traffic_source",
-        "utm_source",
-        "utm_medium",
-        "utm_campaign",
-        "utm_content",
-        "utm_term",
-        "gclid",
-        "msclkid"
-      ];
-
+      const attributionFields = ["measurement_version", "first_touch_at", "first_landing_page", "first_landing_topic", "first_referrer", "traffic_source", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "msclkid"];
       const setFieldValue = (name, value) => {
-        const input = form.querySelector(`input[name="${name}"]`);
-        if (input instanceof HTMLInputElement) {
-          input.value = String(value || "").slice(0, 200);
-        }
+        const input = form.elements.namedItem(name);
+        if (input instanceof HTMLInputElement) input.value = String(value || "").slice(0, 200);
       };
-
       const populateAttribution = () => {
         setFieldValue("conversion_page", `${location.origin}${location.pathname}`);
         try {
           const stored = JSON.parse(localStorage.getItem(storageKey) || "{}");
           attributionFields.forEach((name) => setFieldValue(name, stored[name]));
-        } catch {
-          // Attribution is optional and must never block an inquiry.
-        }
+        } catch { /* The form still works if storage is unavailable. */ }
       };
-
+      const params = new URLSearchParams(location.search);
+      const prefill = [
+        ["monthly_sales_average", "monthly_sales"],
+        ["current_management_fee", "current_fee"]
+      ];
+      prefill.forEach(([field, param]) => {
+        const value = params.get(param);
+        const input = form.elements.namedItem(field);
+        if (input instanceof HTMLInputElement && value && /^\d{1,9}$/.test(value)) input.value = value;
+      });
+      const plan = params.get("plan");
+      if (plan) {
+        const message = form.elements.namedItem("message");
+        if (message instanceof HTMLTextAreaElement) message.value = `物件規模：${plan.slice(0, 80)}。料金の比較について相談したいです。`;
+      }
       populateAttribution();
 
-      const setStatus = (type, message) => {
-        status.className = `form-status ${type}`;
-        status.innerHTML = message;
+      const showStatus = (kind, html) => {
+        status.className = `form-status ${kind}`;
+        status.innerHTML = html;
         status.hidden = false;
+        status.scrollIntoView({ behavior: "smooth", block: "nearest" });
       };
-
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         status.hidden = true;
-
-        if (!form.reportValidity()) {
-          return;
-        }
-
+        if (!form.reportValidity()) return;
         populateAttribution();
-
-        const confirmed = window.confirm("入力内容を確認しました。送信してよろしいですか？");
-        if (!confirmed) {
-          return;
-        }
-
         submitButton.disabled = true;
-        submitButton.textContent = "送信中...";
-
+        submitButton.textContent = "送信中…";
         try {
-          const accessKey = accessKeyInput instanceof HTMLInputElement ? accessKeyInput.value : "";
-          if (!accessKey) {
-            throw new Error("Submission settings are not configured.");
-          }
-
           const response = await fetch(form.action, {
             method: "POST",
             body: new FormData(form),
-            headers: {
-              Accept: "application/json"
-            }
+            headers: { Accept: "application/json" }
           });
           const result = await response.json();
-
-          if (!response.ok || !result.success) {
-            throw new Error(result.message || "Web3Forms submission failed.");
-          }
-
-          if (Array.isArray(window.dataLayer)) {
-            window.dataLayer.push({
-              event: "contact_form_success",
-              form_name: "住宅宿泊管理 お問い合わせ",
-              traffic_source: form.elements.namedItem("traffic_source")?.value || ""
-            });
-          }
-
+          if (!response.ok || !result.success) throw new Error("Submission failed");
+          if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: "generate_lead", form_name: "住宅宿泊管理 お問い合わせ" });
+          if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { form_name: "住宅宿泊管理 お問い合わせ" });
           form.reset();
-          setStatus(
-            "success",
-            "送信が完了しました。<br />お問い合わせありがとうございます。<br />担当者より1〜3営業日以内にご連絡します。<br />返信が届かない場合は、迷惑メールフォルダもご確認ください。"
-          );
-        } catch (error) {
-          setStatus("error", "送信に失敗しました。<br />時間をおいて再度お試しいただくか、恐れ入りますが直接お問い合わせください。");
+          showStatus("success", "送信が完了しました。ご相談ありがとうございます。担当者から返信します。迷惑メールフォルダもご確認ください。");
+        } catch {
+          showStatus("error", '送信できませんでした。再度お試しいただくか、<a href="mailto:backoffice@windwoods-stayble.com">メールでご相談ください</a>。');
         } finally {
           submitButton.disabled = false;
-          submitButton.textContent = "送信内容を確認する";
+          submitButton.textContent = "無料相談を送信する";
         }
       });
     })();

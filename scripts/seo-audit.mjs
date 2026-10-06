@@ -6,6 +6,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const siteUrl = "https://minpaku.stayble.jp";
 const lastUpdated = "2026-09-01";
+const updatedRoutes = new Set(["/", "/pricing/", "/switching/", "/area/", "/faq/", "/company/", "/contact/"]);
+const expectedDate = (route) => updatedRoutes.has(route) ? "2026-10-06" : lastUpdated;
 const expectedHomeTitle = "札幌で民泊管理会社を乗り換えるなら｜月額5,000円〜＋売上5%｜国交大臣登録 Stayble";
 const routes = ["/", "/pricing/", "/switching/", "/services/", "/cleaning-linen/", "/emergency/", "/area/", "/faq/", "/company/", "/contact/"];
 const errors = [];
@@ -42,7 +44,7 @@ for (const route of routes) {
   }
   if (count(html, /<meta\s+name="description"/gi) !== 1) addError(route, "meta descriptionが1件ではありません");
   if (!html.includes(`<link rel="canonical" href="${expectedCanonical}">`)) addError(route, "canonicalが不正です");
-  if (!html.includes(`"dateModified":"${lastUpdated}"`)) addError(route, "dateModifiedが最新日ではありません");
+  if (!html.includes(`"dateModified":"${expectedDate(route)}"`)) addError(route, "dateModifiedがページ更新日と一致しません");
   if (/FAQPage/.test(html)) addError(route, "廃止方針のFAQPage schemaが残っています");
 
   const schemaPattern = /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
@@ -82,8 +84,9 @@ for (const criticalFile of ["robots.txt", "sitemap.xml", "llms.txt", "CNAME", "0
 
 const sitemap = fs.readFileSync(path.join(dist, "sitemap.xml"), "utf8");
 if (count(sitemap, /<url>/g) !== routes.length) addError("sitemap", "URL件数が10件ではありません");
-if (count(sitemap, new RegExp(`<lastmod>${lastUpdated}<\\/lastmod>`, "g")) !== routes.length) {
-  addError("sitemap", "lastmodが全ページ最新日ではありません");
+for (const route of routes) {
+  const entry = sitemap.match(new RegExp(`<url>\\s*<loc>${siteUrl.replaceAll(".", "\\.")}${route}<\\/loc>\\s*<lastmod>([^<]+)<\\/lastmod>`, "i"));
+  if (!entry || entry[1] !== expectedDate(route)) addError(route, "sitemap lastmodがページ更新日と一致しません");
 }
 
 if (errors.length) {

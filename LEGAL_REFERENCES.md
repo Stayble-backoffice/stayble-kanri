@@ -20,6 +20,15 @@
 https://www.mlit.go.jp/kankocho/minpaku/
 ```
 
+### 札幌市・北海道の届出窓口
+
+```txt
+https://www.city.sapporo.jp/keizai/kanko/minpaku/20190409after.html
+https://www.pref.hokkaido.lg.jp/kz/kkd/minpaku/portal.html
+```
+
+札幌市内の届出住宅は札幌市、札幌市以外の道内は北海道の案内を確認する。管理業者変更の時期などの個別手続きは最新の公的情報を参照する。
+
 ### 管理業務の委託について
 
 ```txt

@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AttributionTracker from "../components/AttributionTracker.astro";
-import { LAST_UPDATED, SITE_URL, areas, siteMeta } from "../data/site";
+import { LAST_UPDATED, pageModified, SITE_URL, areas, siteMeta } from "../data/site";
 import "../styles/global.css";
 
 interface Props {
@@ -36,7 +36,7 @@ const schemas = [
       postalCode: "064-0805",
       addressRegion: "北海道",
       addressLocality: "札幌市中央区",
-      streetAddress: "南五条西15丁目2-3-503",
+      streetAddress: "南五条西15丁目2-3 リズム医大前503",
       addressCountry: "JP"
     },
     areaServed: areas,
@@ -82,7 +82,7 @@ const schemas = [
     name: title,
     description,
     inLanguage: "ja-JP",
-    dateModified: LAST_UPDATED,
+    dateModified: pageModified[path] ?? LAST_UPDATED,
     isPartOf: {
       "@id": `${SITE_URL}#website`
     },
