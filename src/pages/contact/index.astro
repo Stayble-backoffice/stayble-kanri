@@ -138,6 +138,13 @@ const web3formsAccessKey = "b40b2a03-d391-446f-a7d2-fdcfbfef3c3e";
       }
       populateAttribution();
 
+      let formStartTracked = false;
+      form.addEventListener("focusin", (event) => {
+        if (formStartTracked || !(event.target instanceof HTMLElement) || !event.target.matches("input, select, textarea")) return;
+        formStartTracked = true;
+        if (typeof window.gtag === "function") window.gtag("event", "form_start", { form_id: "contact-form" });
+      });
+
       const showStatus = (kind, html) => {
         status.className = `form-status ${kind}`;
         status.innerHTML = html;
@@ -159,7 +166,6 @@ const web3formsAccessKey = "b40b2a03-d391-446f-a7d2-fdcfbfef3c3e";
           });
           const result = await response.json();
           if (!response.ok || !result.success) throw new Error("Submission failed");
-          if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: "generate_lead", form_name: "住宅宿泊管理 お問い合わせ" });
           if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { form_name: "住宅宿泊管理 お問い合わせ" });
           form.reset();
           showStatus("success", "送信が完了しました。ご相談ありがとうございます。担当者から返信します。迷惑メールフォルダもご確認ください。");
