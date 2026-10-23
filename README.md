@@ -2,6 +2,7 @@
 
 株式会社Staybleの住宅宿泊管理LP「乗り換え民泊管理」用リポジトリです。  
 公開予定URLは `https://minpaku.stayble.jp/` です。
+正本はこのリポジトリの `main` です。PC故障時や開発環境の再作成は [復元手順](docs/workspace-recovery.md) を参照してください。Stayble本体とは独立しており、今回はWindowsで開発を継続します。
 
 ---
 
@@ -125,9 +126,7 @@ stayble-kanri/
 Astroの場合:
 
 ```bash
-npm create astro@latest .
-npm install
-npm run images:generate
+npm ci
 npm run dev
 ```
 
@@ -151,7 +150,7 @@ npm run preview
 依存関係のインストール:
 
 ```bash
-npm install
+npm ci
 ```
 
 型チェック:
